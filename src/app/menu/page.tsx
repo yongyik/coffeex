@@ -1,24 +1,24 @@
 import type { Metadata } from "next";
 import { siteConfig } from "@/config/site";
-import ContactPageClient from "../contact/ContactPageClient";
+import MenuPageClient from "./MenuPageClient";
 
 export const metadata: Metadata = {
-  title: "联系我们",
+  title: "菜单",
   description:
-    "联系 MyCoffee 查询菜单、预订座位、了解营业时间或合作事项。你可以通过 WhatsApp、电话、Email 或 Google Map 找到我们。",
+    "查看 MyCoffee 的咖啡、特调饮品、甜品与轻食菜单，包含价格、饮品介绍与推荐项目。",
 
   alternates: {
-    canonical: "/contact",
+    canonical: "/menu",
   },
 
   openGraph: {
-    title: `联系我们 | ${siteConfig.name}`,
+    title: `菜单 | ${siteConfig.name}`,
     description:
-      "通过 WhatsApp、电话或 Email 联系 MyCoffee，也可以查看 Google Map 店铺位置。",
-    url: "/contact",
+      "查看 MyCoffee 的咖啡菜单、推荐饮品、甜品与特调饮品。",
+    url: "/menu",
   },
 };
 
-export default function ContactPage() {
-  return <ContactPageClient />;
+export default function MenuPage() {
+  return <MenuPageClient />;
 }
