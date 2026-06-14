@@ -11,8 +11,16 @@ export const siteConfig = {
   whatsapp: "60123456789",
   email: "hello@mycoffee.com",
   address: "Kuala Lumpur, Malaysia",
-  businessHours: "Mon - Sat, 9:00 AM - 9:00 PM",
-
+  businessHours: [
+    {
+      day: "星期一 至 星期五",
+      time: "8:00 AM - 8:00 PM",
+    },
+    {
+      day: "星期六 至 星期日",
+      time: "9:00 AM - 10:00 PM",
+    },
+  ],
   social: {
     facebook: "",
     instagram: "",

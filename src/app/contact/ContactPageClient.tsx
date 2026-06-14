@@ -2,24 +2,8 @@
 
 import { FormEvent, useState } from "react";
 import Banner from "@/components/about/Banner";
+import { siteConfig } from "@/config/site";
 
-const contactConfig = {
-  name: "Mycoffee",
-  phone: "+60 12-345 6789",
-  whatsapp: "60123456789",
-  email: "hello@mycoffee.com",
-  address: "Kuala Lumpur, Malaysia",
-  businessHours: [
-    {
-      day: "星期一 至 星期五",
-      time: "8:00 AM - 8:00 PM",
-    },
-    {
-      day: "星期六 至 星期日",
-      time: "9:00 AM - 10:00 PM",
-    },
-  ],
-};
 
 export default function ContactPageClient() {
   const [name, setName] = useState("");
@@ -30,11 +14,11 @@ export default function ContactPageClient() {
     event.preventDefault();
 
     const text = encodeURIComponent(
-      `你好，我想联系 ${contactConfig.name}。\n\n名字：${name}\n电话：${phone}\n留言：${message}`,
+      `你好，我想联系 ${siteConfig.name}。\n\n名字：${name}\n电话：${phone}\n留言：${message}`,
     );
 
     window.open(
-      `https://wa.me/${contactConfig.whatsapp}?text=${text}`,
+      `https://wa.me/${siteConfig.whatsapp}?text=${text}`,
       "_blank",
     );
   }
@@ -69,28 +53,28 @@ export default function ContactPageClient() {
                   WhatsApp / 电话
                 </h2>
                 <a
-                  href={`https://wa.me/${contactConfig.whatsapp}`}
+                  href={`https://wa.me/${siteConfig.whatsapp}`}
                   target="_blank"
                   rel="noreferrer"
                   className="mt-2 block text-amber-50/85 underline underline-offset-4 hover:text-amber-200"
                 >
-                  {contactConfig.phone}
+                  {siteConfig.phone}
                 </a>
               </div>
 
               <div className="rounded-2xl border border-amber-50/20 bg-amber-50/10 p-4">
                 <h2 className="text-lg font-semibold text-amber-100">Email</h2>
                 <a
-                  href={`mailto:${contactConfig.email}`}
+                  href={`mailto:${siteConfig.email}`}
                   className="mt-2 block text-amber-50/85 underline underline-offset-4 hover:text-amber-200"
                 >
-                  {contactConfig.email}
+                  {siteConfig.email}
                 </a>
               </div>
 
               <div className="rounded-2xl border border-amber-50/20 bg-amber-50/10 p-4">
                 <h2 className="text-lg font-semibold text-amber-100">地址</h2>
-                <p className="mt-2 text-amber-50/85">{contactConfig.address}</p>
+                <p className="mt-2 text-amber-50/85">{siteConfig.address}</p>
               </div>
 
               <div className="rounded-2xl border border-amber-50/20 bg-amber-50/10 p-4">
@@ -99,7 +83,7 @@ export default function ContactPageClient() {
                 </h2>
 
                 <div className="mt-3 space-y-2">
-                  {contactConfig.businessHours.map((item) => (
+                  {siteConfig.businessHours.map((item) => (
                     <div
                       key={item.day}
                       className="flex items-center justify-between gap-4 text-sm text-amber-50/85"
@@ -197,7 +181,7 @@ export default function ContactPageClient() {
           </div>
 
           <iframe
-            title="Mycoffee Google Map"
+            title="MyCoffee Google Map"
             src="https://www.google.com/maps?q=Kuala%20Lumpur%20Malaysia&output=embed"
             className="h-80 w-full border-0 lg:h-96"
             loading="lazy"
