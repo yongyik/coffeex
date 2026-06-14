@@ -21,7 +21,7 @@ const contactConfig = {
   ],
 };
 
-export default function ContactPage() {
+export default function ContactPageClient() {
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [message, setMessage] = useState("");

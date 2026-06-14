@@ -1,8 +1,21 @@
+import { siteConfig } from "@/config/site";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "隐私政策 | Mycoffee",
-  description: "了解 Mycoffee 如何收集、使用和保护你的个人资料。",
+  title: "隐私政策",
+  description:
+    "了解 MyCoffee 如何收集、使用、保存和保护你通过网站、WhatsApp、Email 或联系表单提供的个人资料。",
+
+  alternates: {
+    canonical: "/privacy",
+  },
+
+  openGraph: {
+    title: `隐私政策 | ${siteConfig.name}`,
+    description:
+      "了解 MyCoffee 的个人资料收集、使用、保存、第三方服务与联系方式政策。",
+    url: "/privacy",
+  },
 };
 
 const lastUpdated = "2026年6月14日";

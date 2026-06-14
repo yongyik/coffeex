@@ -3,6 +3,25 @@ import Banner from "@/components/about/Banner";
 import ImageGallery from "@/components/about/ImageGallery";
 import SectionNav from "@/components/about/SectionNav";
 import TeamMember from "@/components/about/TeamMember";
+import { siteConfig } from "@/config/site";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "关于我们",
+  description:
+    "了解 MyCoffee 的品牌故事、咖啡理念、空间氛围与团队成员。我们希望用一杯好咖啡，为城市生活带来温暖与片刻安静。",
+
+  alternates: {
+    canonical: "/about",
+  },
+
+  openGraph: {
+    title: `关于我们 | ${siteConfig.name}`,
+    description:
+      "了解 MyCoffee 的故事、咖啡空间、团队成员与我们坚持的咖啡理念。",
+    url: "/about",
+  },
+};
 
 export default function AboutPage() {
   const members = [

@@ -33,7 +33,7 @@ export default function SwiperCard({
         <section className="flex flex-col gap-1 justify-between px-1">
           <div className="flex flex-col gap-2">
             <h3 className="text-3xl">{name}</h3>
-            <p className="text-">{description}</p>
+            <p className="">{description}</p>
           </div>
 
           <div>

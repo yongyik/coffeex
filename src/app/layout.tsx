@@ -16,15 +16,60 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: siteConfig.name,
-  description: siteConfig.description ,
+  metadataBase: new URL(siteConfig.url),
+
+  title: {
+    default: `${siteConfig.name} | Kuala Lumpur 手工咖啡店`,
+    template: `%s | ${siteConfig.name}`,
+  },
+
+  description: siteConfig.description,
+
+  keywords: [
+    "咖啡店",
+    "Kuala Lumpur cafe",
+    "手工咖啡",
+    "拿铁",
+    "美式咖啡",
+    "甜品",
+    "咖啡菜单",
+    "MyCoffee",
+  ],
+
+  authors: [{ name: siteConfig.name }],
+  creator: siteConfig.name,
+  publisher: siteConfig.name,
+
+  alternates: {
+    canonical: "/",
+  },
+
+  openGraph: {
+    title: `${siteConfig.name} | Kuala Lumpur 手工咖啡店`,
+    description: siteConfig.description,
+    url: siteConfig.url,
+    siteName: siteConfig.name,
+    locale: "zh_MY",
+    type: "website",
+  },
+
+  twitter: {
+    card: "summary_large_image",
+    title: `${siteConfig.name} | Kuala Lumpur 手工咖啡店`,
+    description: siteConfig.description,
+  },
+
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
-}>) { 
+}>) {
   return (
     <html
       lang="zh"
