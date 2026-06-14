@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { siteConfig } from "@/config/site";
-import ContactPageClient from "../contact/ContactPageClient";
+import ContactPageClient from "./ContactPageClient";
 
 export const metadata: Metadata = {
   title: "联系我们",
