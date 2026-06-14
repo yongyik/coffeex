@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
+import { siteConfig } from "@/config/site";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -15,15 +16,15 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "MyCoffee | 手工咖啡与甜品",
-  description: "MyCoffee 是一间温暖的咖啡店，提供手工咖啡、特调饮品、甜品与舒适的聚会空间。",
+  title: siteConfig.name,
+  description: siteConfig.description ,
 };
 
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
-}>) {
+}>) { 
   return (
     <html
       lang="zh"

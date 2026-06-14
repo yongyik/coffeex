@@ -18,7 +18,7 @@ export default function HomePage() {
           "「我们是一家位于市中心的小咖啡馆，精选咖啡豆，用心冲泡每一杯。」"
         }
       />
-
+      <p className="  w-full text-center text-4xl font-bold p-2 lg:text-6xl lg:py-6">推荐饮品</p>
       <HeroSlider items={swiperItems} />
 
       <ImageLinkSection

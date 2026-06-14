@@ -12,7 +12,7 @@ export const siteConfig = {
   phone: "+60 12-345 6789",
   //连接whats号码
   whatsapp: "60123456789",
-  //公司email
+  //公司email 
   email: "coffeex@example.com",
   //地点
   address: "Kuala Lumpur, Malaysia",
