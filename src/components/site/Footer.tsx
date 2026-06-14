@@ -11,15 +11,15 @@ const footerLinks = [
       },
       {
         label: "关于我们",
-        href: "/#about",
+        href: "/about",
       },
       {
-        label: "服务",
-        href: "/#services",
+        label: "菜单",
+        href: "/menu",
       },
       {
         label: "联系我们",
-        href: "/#contact",
+        href: "/contact",
       },
     ],
   },

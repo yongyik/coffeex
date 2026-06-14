@@ -9,7 +9,7 @@ export default function HomePage() {
   );
 
   return (
-    <div className="mx-auto border max-w-7xl space-y-2 mb-20">
+    <div className="mx-auto  max-w-7xl space-y-2 mb-20">
       <Hero
         src={"/images/hero-bg1.jpg"}
         alt={"hero"}
@@ -39,8 +39,6 @@ export default function HomePage() {
         alt="一个人在拉花"
         text="我们的团队"
       />
-
-   
     </div>
   );
 }

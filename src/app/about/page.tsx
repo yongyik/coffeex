@@ -27,7 +27,7 @@ export default function AboutPage() {
   ];
 
   return (
-    <div className="text-amber-100 z-40">
+    <div className="mx-auto w-full text-amber-100 max-w-7xl bg-black/20">
       <Banner
         title="一个温暖小屋"
         src="/images/about/header.jpg"
@@ -102,21 +102,13 @@ export default function AboutPage() {
         <ImageGallery
           id="space"
           title="空间氛围"
-          src={[
-            "/images/about/environment-1.jpg",
-            "/images/about/environment-2.jpg",
-            "/images/about/environment-3.jpg",
-            "/images/about/environment-4.jpg",
-            "/images/about/environment-5.jpg",
-            "/images/about/environment-6.jpg",
-          ]}
-          alt={[
-            "环境照片 1",
-            "环境照片 2",
-            "环境照片 3",
-            "环境照片 4",
-            "环境照片 5",
-            "环境照片 6",
+          images={[
+            { src: "/images/about/environment-1.jpg", alt: "环境照片 1" },
+            { src: "/images/about/environment-2.jpg", alt: "环境照片 2" },
+            { src: "/images/about/environment-3.jpg", alt: "环境照片 3" },
+            { src: "/images/about/environment-4.jpg", alt: "环境照片 4" },
+            { src: "/images/about/environment-5.jpg", alt: "环境照片 5" },
+            { src: "/images/about/environment-6.jpg", alt: "环境照片 6" },
           ]}
         />
 

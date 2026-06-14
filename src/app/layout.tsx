@@ -39,8 +39,10 @@ export default function RootLayout({
         <div aria-hidden="true" className="fixed inset-0 z-0 bg-black/40" />
 
         <Header />
-        <main> {children}</main>
-        <Footer />
+        <main className="relative z-10 min-h-screen">{children}</main>
+        <div className="relative z-10">
+          <Footer />
+        </div>
       </body>
     </html>
   );

@@ -8,7 +8,10 @@ type Props = {
   title?: string;
   subtitle?: string;
   paragraphs?: string[];
-  image?: { src: string; alt: string };
+  image?: {
+    src: string;
+    alt: string;
+  };
 };
 
 export default function AboutSection({
@@ -20,29 +23,42 @@ export default function AboutSection({
 }: Props) {
   return (
     <motion.section
-      initial={{ y: 100, opacity: 0 }}
+      id={id}
+      initial={{ y: 40, opacity: 0 }}
       whileInView={{ y: 0, opacity: 1 }}
       viewport={{ once: true, amount: 0.1 }}
-      transition={{ duration: 0.8 }}
-      id={id}
-      className="p-8 flex flex-col items-center "
+      transition={{ duration: 0.7, ease: "easeOut" }}
+      className="relative z-10 flex scroll-mt-24 flex-col items-center px-6 py-12 text-amber-100 lg:py-20"
     >
-      {title && <h2 className="text-4xl py-5 lg:text-6xl">{title}</h2>}
-      {subtitle && <h3 className="text-3xl py-2 lg:text-4xl">{subtitle}</h3>}
-      {paragraphs.map((p, i) => (
-        <p key={i} className="py-3 max-w-198 lg:text-2xl">
-          {p}
-        </p>
-      ))}
-      {image && (
+      {title ? (
+        <h2 className="py-5 text-center text-4xl font-bold lg:text-6xl">
+          {title}
+        </h2>
+      ) : null}
+
+      {subtitle ? (
+        <h3 className="py-2 text-center text-2xl font-semibold lg:text-4xl">
+          {subtitle}
+        </h3>
+      ) : null}
+
+      <div className="max-w-198 space-y-4">
+        {paragraphs.map((paragraph, index) => (
+          <p key={index} className="leading-8 lg:text-2xl lg:leading-10">
+            {paragraph}
+          </p>
+        ))}
+      </div>
+
+      {image ? (
         <Image
           src={image.src}
           alt={image.alt}
           width={333}
           height={333}
-          className="w-full max-w-88"
+          className="mt-8 h-auto w-full max-w-88 rounded-2xl object-cover shadow-lg"
         />
-      )}
+      ) : null}
     </motion.section>
   );
 }

@@ -20,7 +20,6 @@ export default function TeamMember({ id, title, members }: Props) {
             whileInView={{  opacity: 1 }}
             viewport={{ once: true, amount: 0.1 }}
             transition={{ duration: 0.8 }}
-            id={id}
             key={m.name}
             className="py-7 flex flex-col gap-2.5"
           >
