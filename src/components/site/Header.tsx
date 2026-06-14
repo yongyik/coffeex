@@ -84,7 +84,7 @@ export function Header() {
     >
       <div
         className={clsx(
-          "absolute inset-0 -z-10 bg-[url('/images/nav-bg.jpg')] bg-cover bg-center transition-opacity duration-500",
+          "absolute inset-0 -z-10 bg-[url('/images/nav-bg.webp')] bg-cover bg-center transition-opacity duration-500",
           solidHeader ? "opacity-100" : "opacity-0",
         )}
       />
@@ -162,7 +162,7 @@ export function Header() {
               duration: 0.4,
               ease: "easeOut",
             }}
-            className="absolute left-0 top-full bg-[url('/images/nav-bg.jpg')] bg-cover bg-center z-10 w-full border-b border-t border-white/63 shadow-lg md:hidden"
+            className="absolute left-0 top-full bg-[url('/images/nav-bg.webp')] bg-cover bg-center z-10 w-full border-b border-t border-white/63 shadow-lg md:hidden"
           >
             <nav className="mx-auto flex max-w-6xl flex-col gap-1 px-4 py-4">
               {navItems.map((item) => (

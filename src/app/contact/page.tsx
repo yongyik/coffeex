@@ -40,13 +40,13 @@ export default function ContactPage() {
     <div className="text-amber-50">
       <Banner
         title="联系我们"
-        src="/images/contact/header.jpg"
+        src="/images/contact/header.webp"
         alt="咖啡店联系页面背景"
       />
 
       <main className="mx-auto flex w-full max-w-7xl flex-col gap-8 px-4 py-10 lg:px-8">
         <section className="grid gap-6 lg:grid-cols-2">
-          <div className="rounded-3xl border border-amber-500/50 bg-[url('/images/background/bg-1.jpg')] bg-cover bg-center p-6 shadow-lg">
+          <div className="rounded-3xl border border-amber-500/50 bg-[url('/images/bg1.webp')] bg-cover bg-center p-6 shadow-lg">
             <p className="text-sm font-medium uppercase tracking-[0.3em] text-amber-200">
               Contact Us
             </p>
@@ -112,7 +112,7 @@ export default function ContactPage() {
 
           <form
             onSubmit={handleSubmit}
-            className="rounded-3xl border border-amber-500/50 bg-[url('/images/background/bg-1.jpg')] bg-cover bg-center p-6 shadow-lg"
+            className="rounded-3xl border border-amber-500/50 bg-[url('/images/bg1.webp')] bg-cover bg-center p-6 shadow-lg"
           >
             <h2 className="text-3xl font-bold">发送询问</h2>
 

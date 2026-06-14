@@ -47,7 +47,7 @@ export function Footer() {
   const whatsappUrl = getWhatsappUrl();
 
   return (
-    <footer className=" z-10 border-t bg-[url('/images/footer-bg.jpg')] bg-cover bg-center text-white">
+    <footer className=" z-10 border-t bg-[url('/images/footer-bg.webp')] bg-cover bg-center text-white">
       <div className="mx-auto max-w-6xl px-6 py-12">
         <div className="grid gap-10 md:grid-cols-[1.5fr_1fr_1fr]">
           <div>
@@ -97,7 +97,7 @@ export function Footer() {
             <h2 className="text-sm font-semibold text-white">联系我们</h2>
 
             <p className="mt-4 text-sm leading-7 text-stone-300">
-              有任何网站制作、服务咨询或合作需求，可以直接通过 WhatsApp 联系我们。
+             想预订座位、询问菜单、活动包场或合作，可以直接通过 WhatsApp 联系我们。
             </p>
 
             <a

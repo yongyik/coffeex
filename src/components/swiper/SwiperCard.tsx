@@ -18,7 +18,7 @@ export default function SwiperCard({
   price,
 }: Props) {
   return (
-    <article className="mx-auto flex flex-row py-6.5 px-9 gap-3 w-full max-w-xl h-54 bg-[url('/images/bg1.jpg')] bg-cover bg-center text-amber-50 transition duration-500 hover:scale-115">
+    <article className="mx-auto flex flex-row py-6.5 px-9 gap-3 w-full max-w-xl h-54 bg-[url('/images/bg1.webp')] bg-cover bg-center text-amber-50 transition duration-500 hover:scale-115">
       <figure className="w-42  relative">
         <Image
           src={src}

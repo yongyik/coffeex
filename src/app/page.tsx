@@ -11,7 +11,7 @@ export default function HomePage() {
   return (
     <div className="mx-auto  max-w-7xl space-y-2 mb-20">
       <Hero
-        src={"/images/hero-bg1.jpg"}
+        src={"/images/hero-bg1.webp"}
         alt={"hero"}
         title={"手工烘焙 · 一杯温暖你的咖啡"}
         desc={
@@ -23,19 +23,19 @@ export default function HomePage() {
 
       <ImageLinkSection
         href="/about#story"
-        src="/images/home/link-story.jpg"
+        src="/images/home/link-story.webp"
         alt="一个人在拉花"
         text="我们的故事"
       />
       <ImageLinkSection
         href="/about#space"
-        src="/images/home/link-space.jpg"
+        src="/images/home/link-space.webp"
         alt="一个人在拉花"
         text="我们的环境"
       />
       <ImageLinkSection
         href="/about#team"
-        src="/images/home/link-team.jpg"
+        src="/images/home/link-team.webp"
         alt="一个人在拉花"
         text="我们的团队"
       />

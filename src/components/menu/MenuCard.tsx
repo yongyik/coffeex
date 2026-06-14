@@ -113,7 +113,7 @@ export default function MenuCard({
               aria-modal="true"
               aria-labelledby={`menu-${name}`}
               onClick={(event) => event.stopPropagation()}
-              className="relative max-h-[90vh] w-full max-w-md overflow-y-auto rounded-3xl border border-amber-300 bg-[url('/images/background/bg-1.jpg')] bg-cover bg-center p-6 text-amber-100 shadow-2xl"
+              className="relative max-h-[90vh] w-full max-w-md overflow-y-auto rounded-3xl border border-amber-300 bg-[url('/images/bg1.webp')] bg-cover bg-center p-6 text-amber-100 shadow-2xl"
               initial={{ scale: 0.92, opacity: 0, y: 24 }}
               animate={{ scale: 1, opacity: 1, y: 0 }}
               exit={{ scale: 0.92, opacity: 0, y: 24 }}

@@ -7,19 +7,19 @@ import TeamMember from "@/components/about/TeamMember";
 export default function AboutPage() {
   const members = [
     {
-      src: "/images/about/team-shopkeeper.jpg",
+      src: "/images/about/team-shopkeeper.webp",
       alt: "团队成员 阿文 - 店主",
       name: "阿文 - 店主",
       desc: "热爱旅行与探索，他走过世界各地的咖啡馆，把一路上的灵感带回到这座城市。开这家店，是想创造一个“让生活慢下来”的空间，也希望咖啡能成为人与人之间的桥梁。",
     },
     {
-      src: "/images/about/team-barista1.jpg",
+      src: "/images/about/team-barista1.webp",
       alt: "团队成员 小夏 - 咖啡师",
       name: "小夏 - 咖啡师",
       desc: "热爱旅行与探索，他走过世界各地的咖啡馆，把一路上的灵感带回到这座城市。开这家店，是想创造一个“让生活慢下来”的空间，也希望咖啡能成为人与人之间的桥梁。",
     },
     {
-      src: "/images/about/team-barista2.jpg",
+      src: "/images/about/team-barista2.webp",
       alt: "团队成员 阿杰 - 咖啡师",
       name: "阿杰 - 咖啡师",
       desc: "痴迷于手冲，对咖啡风味的探索近乎执着。他最喜欢和客人分享不同产区的豆子故事，把一杯咖啡变成一场小型的“味觉旅行”。",
@@ -30,7 +30,7 @@ export default function AboutPage() {
     <div className="mx-auto w-full text-amber-100 max-w-7xl bg-black/20">
       <Banner
         title="一个温暖小屋"
-        src="/images/about/header.jpg"
+        src="/images/about/header.webp"
         alt="一个手拿着咖啡豆"
       />
 
@@ -53,7 +53,7 @@ export default function AboutPage() {
             "于是，一个小小的梦想在心里发芽：开一家属于自己的咖啡店，用咖啡分享片刻的安宁与美好。",
           ]}
           image={{
-            src: "/images/about/coffee-beans-in-hand.jpg",
+            src: "/images/about/coffee-beans-in-hand.webp",
             alt: "手握新鲜烘焙咖啡豆的特写",
           }}
         />
@@ -66,7 +66,7 @@ export default function AboutPage() {
             "但每一次尝试都让我们离目标更近一步。正是这份坚持，让我们相信：一杯用心制作的咖啡，能够打动人心。",
           ]}
           image={{
-            src: "/images/about/barista-pouring-coffee.jpg",
+            src: "/images/about/barista-pouring-coffee.webp",
             alt: "咖啡师专注地制作一杯咖啡",
           }}
         />
@@ -80,7 +80,7 @@ export default function AboutPage() {
             "这里的每一张桌椅、每一盏灯，都是为了让你感到自在。",
           ]}
           image={{
-            src: "/images/about/green-coffee-shop-interior.jpg",
+            src: "/images/about/green-coffee-shop-interior.webp",
             alt: "绿植环绕的咖啡店空间",
           }}
         />
@@ -94,7 +94,7 @@ export default function AboutPage() {
             "因为我们始终相信，一杯好咖啡，可以带来无限可能。",
           ]}
           image={{
-            src: "/images/about/coffee-shop-team.jpg",
+            src: "/images/about/coffee-shop-team.webp",
             alt: "我们的咖啡店团队合照",
           }}
         />
@@ -103,12 +103,12 @@ export default function AboutPage() {
           id="space"
           title="空间氛围"
           images={[
-            { src: "/images/about/environment-1.jpg", alt: "环境照片 1" },
-            { src: "/images/about/environment-2.jpg", alt: "环境照片 2" },
-            { src: "/images/about/environment-3.jpg", alt: "环境照片 3" },
-            { src: "/images/about/environment-4.jpg", alt: "环境照片 4" },
-            { src: "/images/about/environment-5.jpg", alt: "环境照片 5" },
-            { src: "/images/about/environment-6.jpg", alt: "环境照片 6" },
+            { src: "/images/about/environment-1.webp", alt: "环境照片 1" },
+            { src: "/images/about/environment-2.webp", alt: "环境照片 2" },
+            { src: "/images/about/environment-3.webp", alt: "环境照片 3" },
+            { src: "/images/about/environment-4.webp", alt: "环境照片 4" },
+            { src: "/images/about/environment-5.webp", alt: "环境照片 5" },
+            { src: "/images/about/environment-6.webp", alt: "环境照片 6" },
           ]}
         />
 

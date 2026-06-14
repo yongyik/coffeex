@@ -10,7 +10,7 @@ const lastUpdated = "2026年6月14日";
 export default function PrivacyPage() {
   return (
     <main className="mx-auto w-full max-w-4xl px-4 py-24 text-amber-50 lg:px-8">
-      <article className="rounded-3xl border border-amber-500/50 bg-[url('/images/background/bg-1.jpg')] bg-cover bg-center p-6 shadow-lg lg:p-10">
+      <article className="rounded-3xl border border-amber-500/50 bg-[url('/images/bg1.webp')] bg-cover bg-center p-6 shadow-lg lg:p-10">
         <p className="text-sm font-medium uppercase tracking-[0.3em] text-amber-200">
           Privacy Policy
         </p>

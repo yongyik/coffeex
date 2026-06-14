@@ -12,7 +12,7 @@ export default function MenuPage() {
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.6, ease: "easeOut" }}
         aria-label="菜单分类"
-        className="rounded-2xl border border-amber-500/50 bg-[url('/images/background/bg-1.jpg')] bg-cover bg-center p-4 text-amber-50 shadow-lg"
+        className="rounded-2xl border border-amber-500/50 bg-[url('/images/bg1.webp')] bg-cover bg-center p-4 text-amber-50 shadow-lg"
       >
         <h2 className="pb-3 text-center text-3xl font-bold">分类</h2>
 
@@ -38,7 +38,7 @@ export default function MenuPage() {
             whileInView={{ y: 0, opacity: 1 }}
             viewport={{ once: true, amount: 0.08 }}
             transition={{ duration: 0.7, ease: "easeOut" }}
-            className="scroll-mt-24 rounded-2xl border border-amber-500/50 bg-[url('/images/background/bg-1.jpg')] bg-cover bg-center p-5 shadow-lg"
+            className="scroll-mt-24 rounded-2xl border border-amber-500/50 bg-[url('/images/bg1.webp')] bg-cover bg-center p-5 shadow-lg"
           >
             <h2 className="text-3xl font-bold">{category.category}</h2>
 
