@@ -20,8 +20,8 @@ export default function SwiperCard({
 }: Props) {
   return (
     <Link href="/menu" aria-label={`查看 ${name} 的菜单详情`} className="block">
-      <article className="mx-auto flex flex-row py-6.5 px-9 gap-3 w-full max-w-xl h-54 bg-[url('/images/bg1.webp')] bg-cover bg-center text-amber-50 transition duration-500 hover:scale-107">
-        <figure className="w-42  relative">
+      <article className="mx-auto flex flex-row py-6.5 px-3 gap-3 w-full max-w-xl h-54 bg-[url('/images/bg1.webp')] bg-cover bg-center text-amber-50 transition duration-500 hover:scale-107">
+        <figure className="w-47 relative">
           <Image
             src={src}
             alt={alt}

@@ -4,6 +4,23 @@ import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
 import { siteConfig } from "@/config/site";
 
+import {
+  Noto_Sans_SC,
+  Noto_Serif_SC,
+} from "next/font/google";
+
+
+const notoSansSC = Noto_Sans_SC({
+  weight: ["400", "500", "700"],
+  subsets: ["latin"],
+  variable: "--font-noto-sans-sc",
+});
+
+const notoSerifSC = Noto_Serif_SC({
+  weight: ["400", "600", "700"],
+  subsets: ["latin"],
+  variable: "--font-noto-serif-sc",
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
@@ -63,7 +80,7 @@ export default function RootLayout({
   return (
     <html
       lang="zh"
-      className={`h-full antialiased`}
+      className={` ${notoSansSC.variable} ${notoSerifSC.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col text-amber-50">
         {/* 全站固定背景图 */}
