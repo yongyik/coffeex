@@ -1,6 +1,6 @@
-# MyCoffee - Coffee Shop Website
+# MyCoffee - Coffee Shop Website 
 
-一个使用 Next.js 制作的咖啡店展示网站，适合作为咖啡馆、饮品店、小型餐饮店的官网案例。
+一个使用 Next.js 制作的咖啡店展示网站，适合作为咖啡馆、饮品店、小型餐饮店的官网案例。-
 
 ## 功能
 
