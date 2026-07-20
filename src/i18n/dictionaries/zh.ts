@@ -38,7 +38,7 @@ export const zhDictionary: Dictionary = {
   seo: {
     home: {
       title: "晨木咖啡｜Mont Kiara 精品咖啡店",
-      description: "探索晨木咖啡的手工咖啡、推荐饮品、温暖空间与品牌故事。",
+      description: "探索晨木咖啡的手工咖啡、推荐饮品、店内公告、温暖空间与品牌故事。",
     },
     menu: {
       title: "菜单｜晨木咖啡",
@@ -46,11 +46,11 @@ export const zhDictionary: Dictionary = {
     },
     about: {
       title: "关于我们｜晨木咖啡",
-      description: "了解晨木咖啡的品牌故事、咖啡理念、空间氛围与团队。",
+      description: "了解晨木咖啡的品牌故事、品牌价值、空间氛围与团队。",
     },
     contact: {
       title: "联系与到访｜晨木咖啡",
-      description: "查看晨木咖啡 Mont Kiara 店址、营业时间，并通过电话或 WhatsApp 联系我们。",
+      description: "查看晨木咖啡 Mont Kiara 店址、营业时间、到店方式与设施，并通过电话或 WhatsApp 联系我们。",
     },
     privacy: {
       title: "隐私说明｜晨木咖啡",
@@ -64,6 +64,34 @@ export const zhDictionary: Dictionary = {
     viewMenu: "查看菜单",
     messageUs: "WhatsApp 咨询",
     recommended: "推荐饮品",
+    carouselDescription: "从经典咖啡到温柔茶香，看看客人最常点的几款饮品。",
+    announcements: {
+      heading: "店内公告",
+      description: "近期营业与每日供应安排。",
+      typeLabels: { notice: "营业通知", new: "新品供应", holiday: "假期安排" },
+    },
+    businessInfo: {
+      heading: "到店资料",
+      today: "今日营业",
+      location: "店铺位置",
+      whatsapp: "WhatsApp 咨询",
+      wifi: "提供免费 Wi-Fi",
+      parking: "附近设有公共停车位",
+    },
+    exploreTitle: "认识晨木咖啡",
+    testimonials: {
+      heading: "客人眼中的晨木",
+      description: "几段虚构情境评价，展示这间社区咖啡店希望带来的日常体验。",
+      ratingLabel: "5 星评价",
+      notice: "评价内容为作品集案例展示，并非来自真实评论平台。",
+    },
+    finalCta: {
+      title: "下一杯咖啡，留给慢一点的时光。",
+      description: "查看菜单、寻找路线，或通过 WhatsApp 联系我们。",
+      menu: "查看菜单",
+      visit: "到店信息",
+      whatsapp: "WhatsApp 咨询",
+    },
     storyLink: "我们的故事",
     storyAlt: "咖啡师冲泡手工咖啡的品牌故事入口",
     spaceLink: "我们的环境",
@@ -80,7 +108,8 @@ export const zhDictionary: Dictionary = {
     },
   },
   menu: {
-    pageTitle: "晨木咖啡菜单",
+    pageTitle: "菜单",
+    pageDescription: "从经典咖啡、冰饮到每日甜点，为慢一点的时光准备一份喜欢的味道。",
     categoryTitle: "分类",
     categories: {
       hot: "热饮",
@@ -90,43 +119,48 @@ export const zhDictionary: Dictionary = {
     },
     tags: { bestseller: "热门推荐", new: "新品", vegetarian: "素食" },
     currentCategory: "当前分类",
+    askAboutItem: "咨询这款商品",
+    itemInquiryMessage: "晨木咖啡，你好，我想了解「{item}」的供应情况。",
+    notesTitle: "点单说明",
+    notes: [
+      "所有价格均以马币计算。",
+      "图片仅供展示，实际出品可能略有不同。",
+      "植物奶、额外浓缩和部分客制选项可能需要额外收费。",
+      "如有食物过敏，请在点餐前向店员确认。",
+    ],
   },
   about: {
     bannerTitle: "一间温暖小屋",
     bannerAlt: "手掌托着新鲜烘焙咖啡豆的特写",
     sectionNavigation: "关于页面区块导航",
-    nav: { story: "我们的故事", space: "空间氛围", team: "团队介绍" },
+    nav: { story: "品牌故事", space: "店内空间", team: "团队成员" },
     sections: [
       {
         title: "我们的故事",
         subtitle: "起点 · 一杯咖啡的启发",
         paragraphs: [
-          "一次旅行中，我们走进一间安静的小咖啡馆。咖啡的香气和从容的节奏，让忙碌的生活慢了下来。",
-          "这份体验成为晨木咖啡的起点：在城市里留一处温暖空间，用认真冲泡的一杯咖啡陪伴日常。",
+          "一次旅行中，我们走进一间安静的小咖啡馆。咖啡香与从容节奏让忙碌慢下来，也成为晨木咖啡的起点：在城市里留一处温暖空间，用认真冲泡的一杯咖啡陪伴日常。",
         ],
         imageAlt: "手握新鲜烘焙咖啡豆的特写",
       },
       {
         subtitle: "坚持 · 学习与尝试",
         paragraphs: [
-          "从挑选产区、理解烘焙，到调整萃取与牛奶比例，我们在一次次测试中寻找稳定而清晰的风味。",
-          "失败过的豆子和不完美的拉花，都让我们更懂得尊重原料，也更珍惜每一次出杯。",
+          "从挑选产区、理解烘焙，到调整萃取与牛奶比例，我们在反复测试中寻找稳定清晰的风味，也从每次不完美里学习尊重原料。",
         ],
         imageAlt: "咖啡师专注地制作手冲咖啡",
       },
       {
         subtitle: "空间 · 属于大家的小店",
         paragraphs: [
-          "我们把这里想成城市里的客厅：适合独自阅读，也适合和朋友分享一段午后。",
-          "木质家具、绿植和柔和灯光保留了店里的温度，让每位访客都能自在坐下。",
+          "我们把这里想成城市里的客厅：适合独自阅读，也适合与朋友分享午后。木质家具、绿植和柔和灯光，让每位访客都能自在坐下。",
         ],
         imageAlt: "绿植与木质家具围成的咖啡店空间",
       },
       {
         subtitle: "未来 · 用咖啡连结彼此",
         paragraphs: [
-          "咖啡不只是提神饮品，也能成为人与人相遇的理由。",
-          "未来我们会继续探索新风味与社区活动，让不同故事在这里自然交汇。",
+          "咖啡不只是提神饮品，也能成为人与人相遇的理由。我们会继续探索新风味与小型社区活动，让不同故事在这里自然交汇。",
         ],
         imageAlt: "晨木咖啡团队在店内的合照",
       },
@@ -140,22 +174,44 @@ export const zhDictionary: Dictionary = {
       "砖墙、吊灯与大窗围成的咖啡店座位区",
       "窗边排列的玻璃冷萃咖啡器具",
     ],
+    valuesTitle: "我们重视的事",
+    values: [
+      {
+        title: "认真制作",
+        description: "从咖啡豆、冲煮参数到出杯，每一个步骤都保持稳定和用心。",
+      },
+      {
+        title: "温暖社区",
+        description: "希望这里不仅是一家咖啡店，也是附近居民可以放慢脚步的空间。",
+      },
+      {
+        title: "简单纯粹",
+        description: "不过度复杂，用清楚的风味、舒服的环境和真诚服务做好每一天。",
+      },
+    ],
     teamTitle: "团队介绍",
+    favoriteLabel: "最喜欢",
     members: [
       {
-        name: "阿文 · 店主",
+        name: "阿文",
+        role: "Founder / 店主",
         alt: "晨木咖啡店主阿文",
-        description: "阿文喜欢从旅行中的独立咖啡馆寻找灵感。他希望晨木成为一处让生活慢下来的空间，也让咖啡成为人与人之间自然的桥梁。",
+        description: "负责店铺方向、咖啡豆选择与日常营运，希望晨木成为附近居民可以放慢脚步的空间。",
+        favorite: "手冲咖啡",
       },
       {
-        name: "小夏 · 咖啡师",
+        name: "小夏",
+        role: "Barista / 咖啡师",
         alt: "晨木咖啡师小夏",
-        description: "小夏擅长意式咖啡与拉花，也记得熟客喜欢的口味。她相信稳定而细致的日常，能让一间咖啡店真正变得亲切。",
+        description: "专注意式咖啡、牛奶质感与拉花，也细心记住熟客习惯的口味。",
+        favorite: "冰拿铁",
       },
       {
-        name: "阿杰 · 咖啡师",
+        name: "阿杰",
+        role: "Barista / 咖啡师",
         alt: "晨木咖啡师阿杰",
-        description: "阿杰专注手冲与产区风味，喜欢分享咖啡豆背后的故事。他希望每一杯咖啡都像一段短短的味觉旅行。",
+        description: "专注手冲与产区风味，喜欢用简单方式分享咖啡豆背后的故事。",
+        favorite: "美式咖啡",
       },
     ],
   },
@@ -199,6 +255,7 @@ export const zhDictionary: Dictionary = {
     validation: {
       name: "请输入姓名。",
       phone: "请输入联系电话。",
+      phoneFormat: "请输入有效的联系电话，可使用数字、空格、+、- 或括号。",
       enquiryType: "请选择咨询类型。",
       message: "请输入留言内容。",
     },
@@ -206,6 +263,35 @@ export const zhDictionary: Dictionary = {
     locationTitle: "店铺位置",
     locationDescription: "地图显示 Mont Kiara 店址；出发前可联系确认座位与营业安排。",
     mapTitle: "晨木咖啡 Google Map 店铺位置",
+    gettingHereTitle: "如何到达",
+    gettingHere: [
+      "咖啡店位于 Solaris Mont Kiara 商业区附近。",
+      "从主要商业区域步行约数分钟即可到达。",
+      "附近设有公共停车位。",
+      "周末下午建议提前通过 WhatsApp 确认座位情况。",
+    ],
+    facilitiesTitle: "店内设施",
+    facilities: ["免费 Wi-Fi", "电源插座", "室内座位", "附近停车", "适合小型聚会"],
+    faqTitle: "常见问题",
+    faqDescription: "到店前常见的座位、活动和菜单问题。",
+    faqs: [
+      {
+        question: "是否接受订位？",
+        answer: "我们接受一般座位咨询。周末和公共假期建议提前通过 WhatsApp 联系。",
+      },
+      {
+        question: "是否可以举办私人活动？",
+        answer: "可以通过 WhatsApp 提交活动包场咨询，我们会根据日期、人数和需求回复。",
+      },
+      {
+        question: "是否提供植物奶？",
+        answer: "部分饮品可选择植物奶，可能需要额外收费，请以当天供应情况为准。",
+      },
+      {
+        question: "附近有停车位吗？",
+        answer: "附近设有公共停车位，繁忙时段建议预留更多寻找车位的时间。",
+      },
+    ],
     notProvided: "未填写",
     whatsappGreeting: "晨木咖啡，你好：",
     whatsappFields: {

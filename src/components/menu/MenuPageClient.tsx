@@ -3,10 +3,11 @@
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import type { LocalizedMenuCategory } from "@/data/menu";
-import type { Dictionary, MenuCategoryKey } from "@/i18n/types";
+import type { Dictionary, Locale, MenuCategoryKey } from "@/i18n/types";
 import MenuCard from "./MenuCard";
 
 interface MenuPageClientProps {
+  locale: Locale;
   menu: LocalizedMenuCategory[];
   dictionary: {
     menu: Dictionary["menu"];
@@ -14,7 +15,11 @@ interface MenuPageClientProps {
   };
 }
 
-export default function MenuPageClient({ menu, dictionary }: MenuPageClientProps) {
+export default function MenuPageClient({
+  locale,
+  menu,
+  dictionary,
+}: MenuPageClientProps) {
   const [activeCategory, setActiveCategory] = useState<MenuCategoryKey>(
     menu[0]?.categoryKey ?? "hot",
   );
@@ -42,21 +47,22 @@ export default function MenuPageClient({ menu, dictionary }: MenuPageClientProps
   }, [menu]);
 
   return (
-    <div className="mx-auto flex w-full max-w-7xl flex-col gap-6 px-4 py-8 pt-20 lg:px-8">
-      <h1 className="sr-only">{dictionary.menu.pageTitle}</h1>
+    <div className="mx-auto flex w-full max-w-7xl flex-col gap-6 px-4 pb-10 pt-24 lg:px-8">
+      <header className="rounded-3xl border border-amber-500/50 bg-[url('/images/bg1.webp')] bg-cover bg-center px-5 py-8 text-center text-amber-50 shadow-lg sm:px-8">
+        <h1 className="text-4xl font-bold lg:text-6xl">{dictionary.menu.pageTitle}</h1>
+        <p className="mx-auto mt-3 max-w-2xl leading-7 text-amber-50/80">
+          {dictionary.menu.pageDescription}
+        </p>
+      </header>
 
       <motion.nav
         initial={{ y: 32, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.6, ease: "easeOut" }}
         aria-label={dictionary.menu.categoryTitle}
-        className="sticky top-16 z-30 rounded-2xl border border-amber-500/50 bg-[url('/images/bg1.webp')] bg-cover bg-center p-4 text-amber-50 shadow-lg"
+        className="sticky top-16 z-30 min-h-16 rounded-2xl border border-amber-500/50 bg-[url('/images/bg1.webp')] bg-cover bg-center px-3 py-2 text-amber-50 shadow-lg"
       >
-        <h2 className="pb-3 text-center text-3xl font-bold">
-          {dictionary.menu.categoryTitle}
-        </h2>
-
-        <div className="flex flex-row gap-2 overflow-x-auto pb-1 md:grid md:grid-cols-4 md:overflow-visible">
+        <div className="flex min-h-12 flex-row items-center gap-2 overflow-x-auto md:justify-center md:overflow-visible">
           {menu.map((category) => {
             const isActive = activeCategory === category.categoryKey;
             return (
@@ -70,7 +76,7 @@ export default function MenuPageClient({ menu, dictionary }: MenuPageClientProps
                     : dictionary.menu.categories[category.categoryKey]
                 }
                 onClick={() => setActiveCategory(category.categoryKey)}
-                className={`flex h-11 min-w-32 shrink-0 items-center justify-center whitespace-nowrap rounded-xl border px-4 text-center text-base font-medium transition hover:bg-amber-50/20 md:min-w-0 lg:text-xl ${
+                className={`flex h-11 min-w-32 shrink-0 items-center justify-center whitespace-nowrap rounded-xl border px-4 text-center text-sm font-medium transition hover:bg-amber-50/20 md:min-w-0 md:flex-1 md:text-base lg:max-w-56 ${
                   isActive
                     ? "border-amber-100 bg-amber-50/20"
                     : "border-amber-50/30 bg-amber-50/10"
@@ -92,7 +98,7 @@ export default function MenuPageClient({ menu, dictionary }: MenuPageClientProps
             whileInView={{ y: 0, opacity: 1 }}
             viewport={{ once: true, amount: 0.08 }}
             transition={{ duration: 0.7, ease: "easeOut" }}
-            className="scroll-mt-52 rounded-2xl border border-amber-500/50 bg-[url('/images/bg1.webp')] bg-cover bg-center p-5 shadow-lg"
+            className="scroll-mt-36 rounded-2xl border border-amber-500/50 bg-[url('/images/bg1.webp')] bg-cover bg-center p-5 shadow-lg"
           >
             <h2 className="text-3xl font-bold">
               {dictionary.menu.categories[category.categoryKey]}
@@ -100,8 +106,9 @@ export default function MenuPageClient({ menu, dictionary }: MenuPageClientProps
 
             <ul className="grid grid-cols-1 gap-4 px-3 py-4 md:grid-cols-2">
               {category.items.map((item) => (
-                <li key={item.id} id={item.id} className="scroll-mt-52">
+                <li key={item.id} id={item.id} className="scroll-mt-36">
                   <MenuCard
+                    locale={locale}
                     src={item.photo}
                     alt={item.name}
                     name={item.name}
@@ -113,6 +120,8 @@ export default function MenuPageClient({ menu, dictionary }: MenuPageClientProps
                     allergens={item.allergens}
                     labels={dictionary.common}
                     tagLabels={dictionary.menu.tags}
+                    inquiryLabel={dictionary.menu.askAboutItem}
+                    inquiryMessage={dictionary.menu.itemInquiryMessage}
                   />
                 </li>
               ))}
@@ -120,6 +129,13 @@ export default function MenuPageClient({ menu, dictionary }: MenuPageClientProps
           </motion.div>
         ))}
       </section>
+
+      <aside className="rounded-2xl border border-amber-50/20 bg-black/25 p-5 text-amber-50/75">
+        <h2 className="text-lg font-semibold text-amber-100">{dictionary.menu.notesTitle}</h2>
+        <ul className="mt-3 list-disc space-y-2 pl-5 text-sm leading-6">
+          {dictionary.menu.notes.map((note) => <li key={note}>{note}</li>)}
+        </ul>
+      </aside>
     </div>
   );
 }

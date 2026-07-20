@@ -23,6 +23,7 @@ export const siteConfig = {
   whatsapp: "60128886620",
   email: "hello@morningoakcoffee.com",
   address: "18, Jalan Solaris 3, Mont Kiara, 50480 Kuala Lumpur, Malaysia",
+  area: "Mont Kiara, Kuala Lumpur",
   priceRange: "RM 8–13",
   instagramHandle: "@morningoakcoffee",
   defaultWhatsAppMessage: localized(

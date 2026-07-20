@@ -3,9 +3,11 @@
 import Image from "next/image";
 import { useEffect, useId, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import type { Dictionary, MenuTagKey } from "@/i18n/types";
+import type { Dictionary, Locale, MenuTagKey } from "@/i18n/types";
+import { buildMenuItemInquiryMessage, getWhatsAppUrl } from "@/lib/whatsapp";
 
 interface Props {
+  locale: Locale;
   src: string;
   alt: string;
   name: string;
@@ -17,6 +19,8 @@ interface Props {
   allergens: string[];
   labels: Dictionary["common"];
   tagLabels: Dictionary["menu"]["tags"];
+  inquiryLabel: string;
+  inquiryMessage: string;
 }
 
 function formatPrice(price: number) {
@@ -27,6 +31,7 @@ function formatPrice(price: number) {
 }
 
 export default function MenuCard({
+  locale,
   src,
   alt,
   name,
@@ -38,6 +43,8 @@ export default function MenuCard({
   allergens,
   labels,
   tagLabels,
+  inquiryLabel,
+  inquiryMessage,
 }: Props) {
   const [showMore, setShowMore] = useState(false);
   const titleId = useId();
@@ -45,6 +52,10 @@ export default function MenuCard({
   const triggerRef = useRef<HTMLButtonElement>(null);
   const dialogRef = useRef<HTMLDivElement>(null);
   const closeButtonRef = useRef<HTMLButtonElement>(null);
+  const inquiryUrl = getWhatsAppUrl(
+    locale,
+    buildMenuItemInquiryMessage(inquiryMessage, name),
+  );
 
   function openModal() {
     setShowMore(true);
@@ -255,6 +266,15 @@ export default function MenuCard({
                     {labels.collapse}
                   </button>
                 </div>
+
+                <a
+                  href={inquiryUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex min-h-12 w-full items-center justify-center rounded-full bg-amber-100 px-5 py-3 text-center font-semibold text-stone-950 transition hover:bg-white"
+                >
+                  {inquiryLabel}
+                </a>
               </section>
             </motion.div>
           </motion.div>

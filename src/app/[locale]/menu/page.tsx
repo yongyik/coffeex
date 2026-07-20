@@ -20,6 +20,7 @@ export default async function MenuPage({ params }: PageProps) {
 
   return (
     <MenuPageClient
+      locale={locale}
       menu={getLocalizedMenu(locale)}
       dictionary={{ menu: dictionary.menu, common: dictionary.common }}
     />

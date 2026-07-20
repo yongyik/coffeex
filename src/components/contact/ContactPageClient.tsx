@@ -1,6 +1,6 @@
 "use client";
 
-import { type FormEvent, useState } from "react";
+import { type FormEvent, useState, useSyncExternalStore } from "react";
 import Link from "next/link";
 import Banner from "@/components/about/Banner";
 import { siteConfig } from "@/config/site";
@@ -10,6 +10,11 @@ import type {
   EnquiryTypeKey,
   Locale,
 } from "@/i18n/types";
+import {
+  getServerDateInputValue,
+  getTodayInputValue,
+  subscribeToLocalDate,
+} from "@/lib/date";
 import {
   buildWhatsAppMessage,
   getWhatsAppUrl,
@@ -33,6 +38,12 @@ interface ContactPageClientProps {
   dictionary: Dictionary["contact"];
 }
 
+function isValidPhoneNumber(value: string) {
+  if (!/^[\d\s()+-]+$/.test(value)) return false;
+  const digitCount = value.replace(/\D/g, "").length;
+  return digitCount >= 7 && digitCount <= 15;
+}
+
 export default function ContactPageClient({
   locale,
   dictionary,
@@ -44,6 +55,11 @@ export default function ContactPageClient({
   const [guests, setGuests] = useState("");
   const [message, setMessage] = useState("");
   const [errors, setErrors] = useState<FormErrors>({});
+  const today = useSyncExternalStore(
+    subscribeToLocalDate,
+    getTodayInputValue,
+    getServerDateInputValue,
+  );
 
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -51,7 +67,11 @@ export default function ContactPageClient({
 
     const nextErrors: FormErrors = {};
     if (!name.trim()) nextErrors.name = dictionary.validation.name;
-    if (!phone.trim()) nextErrors.phone = dictionary.validation.phone;
+    if (!phone.trim()) {
+      nextErrors.phone = dictionary.validation.phone;
+    } else if (!isValidPhoneNumber(phone.trim())) {
+      nextErrors.phone = dictionary.validation.phoneFormat;
+    }
     if (!enquiryType) nextErrors.enquiryType = dictionary.validation.enquiryType;
     if (!message.trim()) nextErrors.message = dictionary.validation.message;
 
@@ -223,6 +243,7 @@ export default function ContactPageClient({
                   id="phone"
                   name="phone"
                   type="tel"
+                  inputMode="tel"
                   autoComplete="tel"
                   value={phone}
                   onChange={(event) => setPhone(event.target.value)}
@@ -264,6 +285,7 @@ export default function ContactPageClient({
                     id="preferred-date"
                     name="preferredDate"
                     type="date"
+                    min={today || undefined}
                     value={preferredDate}
                     onChange={(event) => setPreferredDate(event.target.value)}
                     className="w-full rounded-xl border border-amber-50/30 bg-black/30 px-4 py-3 text-amber-50 outline-none [color-scheme:dark] focus:border-amber-200"
@@ -314,6 +336,32 @@ export default function ContactPageClient({
           </form>
         </section>
 
+        <section className="grid gap-6 lg:grid-cols-2">
+          <article className="rounded-3xl border border-amber-500/50 bg-[url('/images/bg1.webp')] bg-cover bg-center p-6 shadow-lg">
+            <h2 className="text-3xl font-bold">{dictionary.gettingHereTitle}</h2>
+            <ul className="mt-5 space-y-3 text-sm leading-7 text-amber-50/85">
+              {dictionary.gettingHere.map((item) => (
+                <li key={item} className="flex gap-3">
+                  <span aria-hidden="true" className="mt-2 size-1.5 shrink-0 rounded-full bg-amber-200" />
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </article>
+
+          <article className="rounded-3xl border border-amber-500/50 bg-[url('/images/bg1.webp')] bg-cover bg-center p-6 shadow-lg">
+            <h2 className="text-3xl font-bold">{dictionary.facilitiesTitle}</h2>
+            <ul className="mt-5 grid grid-cols-2 gap-3 text-sm sm:grid-cols-3 lg:grid-cols-2 xl:grid-cols-3">
+              {dictionary.facilities.map((facility) => (
+                <li key={facility} className="flex min-h-14 items-center gap-2 rounded-xl border border-amber-50/20 bg-black/20 px-3 py-2">
+                  <span aria-hidden="true" className="size-1.5 shrink-0 rounded-full bg-amber-200" />
+                  <span>{facility}</span>
+                </li>
+              ))}
+            </ul>
+          </article>
+        </section>
+
         <section
           id="location"
           className="scroll-mt-24 overflow-hidden rounded-3xl border border-amber-500/50 bg-black/30 shadow-lg"
@@ -331,6 +379,23 @@ export default function ContactPageClient({
             loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"
           />
+        </section>
+
+        <section aria-labelledby="faq-title" className="rounded-3xl border border-amber-500/50 bg-[url('/images/bg1.webp')] bg-cover bg-center p-6 shadow-lg">
+          <h2 id="faq-title" className="text-3xl font-bold">{dictionary.faqTitle}</h2>
+          <p className="mt-2 max-w-2xl text-sm leading-6 text-amber-50/80">
+            {dictionary.faqDescription}
+          </p>
+          <div className="mt-6 space-y-3">
+            {dictionary.faqs.map((faq) => (
+              <details key={faq.question} className="group rounded-2xl border border-amber-50/20 bg-black/20 px-4 py-3 open:bg-black/30">
+                <summary className="cursor-pointer py-2 font-semibold text-amber-100 marker:text-amber-200">
+                  {faq.question}
+                </summary>
+                <p className="pb-3 pt-2 leading-7 text-amber-50/80">{faq.answer}</p>
+              </details>
+            ))}
+          </div>
         </section>
       </div>
     </div>

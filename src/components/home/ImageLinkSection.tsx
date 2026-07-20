@@ -3,18 +3,28 @@
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import clsx from "clsx";
 
 interface Props {
   href: string;
   src: string;
   alt: string;
   text: string;
+  className?: string;
+  imagePosition?: string;
 }
 
-export default function ImageLinkSection({ href, src, alt, text }: Props) {
+export default function ImageLinkSection({
+  href,
+  src,
+  alt,
+  text,
+  className,
+  imagePosition,
+}: Props) {
   return (
     <motion.div
-      className="relative"
+      className={clsx("relative min-w-0", className)}
       initial={{ y: 80, opacity: 0 }}
       whileInView={{ y: 0, opacity: 1 }}
       viewport={{ once: true, amount: 0.15 }}
@@ -22,16 +32,18 @@ export default function ImageLinkSection({ href, src, alt, text }: Props) {
     >
       <Link
         href={href}
-        className="group relative block w-full overflow-hidden"
+        className="group relative block h-full min-h-56 w-full overflow-hidden"
         aria-label={text}
       >
         <Image
           src={src}
           alt={alt}
-          width={1200}
-          height={600}
-          sizes="100vw"
-          className="h-56 w-full object-cover transition duration-700 group-hover:scale-105 lg:h-96"
+          fill
+          sizes="(max-width: 1023px) 100vw, 50vw"
+          className={clsx(
+            "object-cover transition duration-700 group-hover:scale-105",
+            imagePosition,
+          )}
         />
 
         <div className="absolute inset-0 flex items-center justify-center bg-black/40 transition duration-500 group-hover:bg-black/55">

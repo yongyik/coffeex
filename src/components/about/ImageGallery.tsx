@@ -6,6 +6,8 @@ import Image from "next/image";
 type GalleryImage = {
   src: string;
   alt: string;
+  aspect: string;
+  featured?: boolean;
 };
 
 interface Props {
@@ -16,31 +18,32 @@ interface Props {
 
 export default function ImageGallery({ id, title, images }: Props) {
   return (
-    <section id={id} className="relative z-10 scroll-mt-24 py-12">
-      <h2 className="px-7 pb-8 text-4xl font-bold lg:text-center lg:text-7xl">
+    <section id={id} className="relative z-10 scroll-mt-32 py-14">
+      <h2 className="pb-8 text-4xl font-bold lg:text-center lg:text-6xl">
         {title}
       </h2>
 
-      <div className="space-y-8">
-        {images.map((image, index) => (
+      <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+        {images.map((image) => (
           <motion.div
             key={image.src}
             initial={{ y: 40, opacity: 0 }}
             whileInView={{ y: 0, opacity: 1 }}
             viewport={{ once: true, amount: 0.15 }}
             transition={{ duration: 0.7, ease: "easeOut" }}
-            className={`flex px-7 ${
-              index % 2 === 1 ? "justify-end" : "justify-start"
-            }`}
+            className={image.featured ? "md:col-span-2 lg:col-span-2" : undefined}
           >
-            <Image
-              src={image.src}
-              alt={image.alt}
-              width={396}
-              height={396}
-              sizes="(max-width: 1024px) 224px, 396px"
-              className="h-auto w-56 rounded-2xl border-2 border-amber-50 object-cover shadow-lg lg:w-99"
-            />
+            <figure className={`${image.aspect} relative overflow-hidden rounded-2xl border border-amber-50/40 shadow-lg`}>
+              <Image
+                src={image.src}
+                alt={image.alt}
+                fill
+                sizes={image.featured
+                  ? "(max-width: 767px) 100vw, (max-width: 1279px) 100vw, 66vw"
+                  : "(max-width: 767px) 100vw, (max-width: 1279px) 50vw, 33vw"}
+                className="object-cover"
+              />
+            </figure>
           </motion.div>
         ))}
       </div>

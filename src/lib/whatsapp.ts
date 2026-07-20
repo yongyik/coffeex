@@ -9,6 +9,10 @@ export function getWhatsAppUrl(locale: Locale, message?: string) {
   )}`;
 }
 
+export function buildMenuItemInquiryMessage(template: string, itemName: string) {
+  return template.replace("{item}", itemName);
+}
+
 export interface WhatsAppFormData {
   name: string;
   phone: string;

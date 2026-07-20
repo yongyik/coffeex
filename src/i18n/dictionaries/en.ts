@@ -38,7 +38,7 @@ export const enDictionary: Dictionary = {
   seo: {
     home: {
       title: "Morning Oak Coffee | Specialty Café in Mont Kiara",
-      description: "Discover handcrafted coffee, signature drinks, a welcoming space, and the story behind Morning Oak Coffee.",
+      description: "Discover handcrafted coffee, café updates, customer favourites, a welcoming space, and the story behind Morning Oak Coffee.",
     },
     menu: {
       title: "Menu | Morning Oak Coffee",
@@ -46,11 +46,11 @@ export const enDictionary: Dictionary = {
     },
     about: {
       title: "About | Morning Oak Coffee",
-      description: "Meet the people behind Morning Oak Coffee and discover our story, values, and café atmosphere.",
+      description: "Discover the story, values, welcoming space, and people behind Morning Oak Coffee.",
     },
     contact: {
       title: "Contact & Visit | Morning Oak Coffee",
-      description: "Find our Mont Kiara address and opening hours, or contact Morning Oak Coffee by phone or WhatsApp.",
+      description: "Find our Mont Kiara address, opening hours, facilities, and arrival guidance, or contact us by phone or WhatsApp.",
     },
     privacy: {
       title: "Privacy Notice | Morning Oak Coffee",
@@ -64,6 +64,34 @@ export const enDictionary: Dictionary = {
     viewMenu: "View Menu",
     messageUs: "Message Us",
     recommended: "Featured Drinks",
+    carouselDescription: "From classic coffee to gentle tea flavours, discover a few customer favourites.",
+    announcements: {
+      heading: "Café Updates",
+      description: "Recent opening-hour and daily availability notes.",
+      typeLabels: { notice: "Service Notice", new: "Now Available", holiday: "Holiday Hours" },
+    },
+    businessInfo: {
+      heading: "Visit information",
+      today: "Open today",
+      location: "Location",
+      whatsapp: "Message us on WhatsApp",
+      wifi: "Free Wi-Fi available",
+      parking: "Public parking nearby",
+    },
+    exploreTitle: "Discover Morning Oak",
+    testimonials: {
+      heading: "A Neighbourhood Favourite",
+      description: "Fictional customer moments that reflect the everyday experience this portfolio café is designed to offer.",
+      ratingLabel: "5-star rating",
+      notice: "Testimonials are fictional portfolio content and are not sourced from a review platform.",
+    },
+    finalCta: {
+      title: "Save your next cup for a slower moment.",
+      description: "Browse the menu, find your way here, or message us on WhatsApp.",
+      menu: "View Menu",
+      visit: "Visit Us",
+      whatsapp: "Message Us",
+    },
     storyLink: "Our Story",
     storyAlt: "A barista preparing coffee, linking to the Morning Oak story",
     spaceLink: "Our Space",
@@ -80,7 +108,8 @@ export const enDictionary: Dictionary = {
     },
   },
   menu: {
-    pageTitle: "Morning Oak Coffee Menu",
+    pageTitle: "Our Menu",
+    pageDescription: "Classic coffee, chilled favourites, and daily desserts made for slower moments.",
     categoryTitle: "Categories",
     categories: {
       hot: "Hot Coffee",
@@ -90,43 +119,48 @@ export const enDictionary: Dictionary = {
     },
     tags: { bestseller: "Best Seller", new: "New", vegetarian: "Vegetarian" },
     currentCategory: "Current category",
+    askAboutItem: "Ask About This Item",
+    itemInquiryMessage: "Hello Morning Oak Coffee, I would like to ask about the availability of “{item}”.",
+    notesTitle: "Menu notes",
+    notes: [
+      "All prices are listed in Malaysian Ringgit.",
+      "Images are for presentation purposes; actual items may vary slightly.",
+      "Plant-based milk, extra espresso shots, and selected customisations may incur additional charges.",
+      "Please speak with our team before ordering if you have any food allergies.",
+    ],
   },
   about: {
     bannerTitle: "A Warm Place to Pause",
     bannerAlt: "A hand holding freshly roasted coffee beans",
     sectionNavigation: "About page sections",
-    nav: { story: "Our Story", space: "Our Space", team: "Meet the Team" },
+    nav: { story: "Our Story", space: "Our Space", team: "Our Team" },
     sections: [
       {
         title: "Our Story",
         subtitle: "The beginning · inspired by one cup",
         paragraphs: [
-          "During a trip, we stepped into a quiet neighbourhood café. The aroma, care, and unhurried pace made a busy day feel lighter.",
-          "That moment became the starting point for Morning Oak: a warm corner in the city, built around coffee made with attention and time.",
+          "During a trip, we stepped into a quiet neighbourhood café. Its aroma and unhurried rhythm softened a busy day and inspired Morning Oak: a warm city corner built around coffee made with attention and time.",
         ],
         imageAlt: "A close-up of freshly roasted coffee beans held in one hand",
       },
       {
         subtitle: "The craft · learning by doing",
         paragraphs: [
-          "From choosing origins and understanding roast profiles to refining extraction and milk ratios, we keep testing until each flavour feels clear and balanced.",
-          "Every imperfect roast or pour has taught us to respect the ingredients and care about consistency.",
+          "From choosing origins and understanding roast profiles to refining extraction and milk ratios, we keep testing for clear, balanced flavours and learn from every imperfect pour.",
         ],
         imageAlt: "A barista carefully preparing pour-over coffee",
       },
       {
         subtitle: "The space · a café for everyone",
         paragraphs: [
-          "We think of the café as a city living room: comfortable for reading alone and relaxed enough for a long afternoon with friends.",
-          "Timber, plants, and gentle light give the room warmth without asking anyone to hurry.",
+          "We think of the café as a city living room: comfortable for reading alone and relaxed enough for an afternoon with friends. Timber, plants, and gentle light make it easy to settle in.",
         ],
         imageAlt: "A café interior filled with plants and timber furniture",
       },
       {
         subtitle: "What comes next · connecting over coffee",
         paragraphs: [
-          "Coffee can be more than a morning habit; it can give people a reason to meet.",
-          "We will keep exploring new flavours and small community gatherings, allowing different stories to cross naturally at Morning Oak.",
+          "Coffee can be more than a morning habit; it can give people a reason to meet. We will keep exploring new flavours and small gatherings that bring different stories together.",
         ],
         imageAlt: "The Morning Oak Coffee team together inside the café",
       },
@@ -140,22 +174,44 @@ export const enDictionary: Dictionary = {
       "A café seating area with brick walls, pendant lights, and large windows",
       "Glass cold-brew towers arranged beside a window",
     ],
+    valuesTitle: "What Matters to Us",
+    values: [
+      {
+        title: "Thoughtful Craft",
+        description: "From selecting beans and refining brew parameters to serving each cup, we value steady, considered work.",
+      },
+      {
+        title: "Warm Community",
+        description: "We want to be more than a coffee stop—a familiar place where neighbours can slow down and feel welcome.",
+      },
+      {
+        title: "Simple Consistency",
+        description: "Clear flavours, a comfortable room, and sincere service keep each day uncomplicated and dependable.",
+      },
+    ],
     teamTitle: "Meet the Team",
+    favoriteLabel: "Favourite",
     members: [
       {
-        name: "Ah Wen · Owner",
+        name: "Ah Wen",
+        role: "Founder / Owner",
         alt: "Ah Wen, owner of Morning Oak Coffee",
-        description: "Ah Wen gathers ideas from independent cafés discovered while travelling. He wants Morning Oak to be a place where the day slows down and conversation comes easily.",
+        description: "He guides the café, selects the beans, and looks after daily operations with the aim of creating an easy neighbourhood pause.",
+        favorite: "Pour-over coffee",
       },
       {
-        name: "Xia · Barista",
+        name: "Xia",
+        role: "Barista",
         alt: "Xia, a barista at Morning Oak Coffee",
-        description: "Xia specialises in espresso and latte art and remembers the regulars' favourite orders. She believes steady, thoughtful service is what makes a café feel familiar.",
+        description: "She focuses on espresso, milk texture, and latte art while remembering the familiar preferences of regular guests.",
+        favorite: "Iced latte",
       },
       {
-        name: "Jie · Barista",
+        name: "Jie",
+        role: "Barista",
         alt: "Jie, a barista at Morning Oak Coffee",
-        description: "Jie focuses on pour-over coffee and regional flavour profiles. He enjoys turning the story behind each bean into a short tasting journey.",
+        description: "He explores pour-over techniques and regional flavour profiles, sharing each bean's story in a clear, approachable way.",
+        favorite: "Americano",
       },
     ],
   },
@@ -199,6 +255,7 @@ export const enDictionary: Dictionary = {
     validation: {
       name: "Please enter your name.",
       phone: "Please enter a contact number.",
+      phoneFormat: "Enter a valid contact number using digits, spaces, +, -, or parentheses.",
       enquiryType: "Please choose an enquiry type.",
       message: "Please enter a message.",
     },
@@ -206,6 +263,35 @@ export const enDictionary: Dictionary = {
     locationTitle: "Find Us",
     locationDescription: "The map shows our Mont Kiara address. Contact us before travelling if you would like to confirm a table or opening arrangements.",
     mapTitle: "Morning Oak Coffee location on Google Maps",
+    gettingHereTitle: "Getting Here",
+    gettingHere: [
+      "The café is near the Solaris Mont Kiara commercial area.",
+      "It is a short walk from the main commercial surroundings.",
+      "Public parking is available nearby.",
+      "On weekend afternoons, message us on WhatsApp ahead of time to check seating availability.",
+    ],
+    facilitiesTitle: "Café Facilities",
+    facilities: ["Free Wi-Fi", "Power Sockets", "Indoor Seating", "Nearby Parking", "Small Groups Welcome"],
+    faqTitle: "Frequently Asked Questions",
+    faqDescription: "Useful details about seating, events, menu options, and parking before your visit.",
+    faqs: [
+      {
+        question: "Do you accept reservations?",
+        answer: "We accept general seating enquiries. We recommend contacting us on WhatsApp ahead of weekends and public holidays.",
+      },
+      {
+        question: "Can I host a private event?",
+        answer: "You can send a private-event enquiry through WhatsApp, and we will reply based on the date, group size, and requirements.",
+      },
+      {
+        question: "Do you offer plant-based milk?",
+        answer: "Plant-based milk is available for selected drinks and may carry an additional charge, subject to daily availability.",
+      },
+      {
+        question: "Is parking available nearby?",
+        answer: "Public parking is available nearby. Please allow extra time to find a space during busy periods.",
+      },
+    ],
     notProvided: "Not provided",
     whatsappGreeting: "Hello Morning Oak Coffee,",
     whatsappFields: {

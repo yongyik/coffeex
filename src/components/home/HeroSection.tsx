@@ -28,12 +28,12 @@ export default function Hero({
   const [loaded, setLoaded] = useState(false);
 
   return (
-    <header className="relative h-70 w-full overflow-hidden bg-stone-900 lg:h-176">
+    <header className="relative h-80 w-full overflow-hidden bg-stone-900 lg:h-176">
       <Image
         src={src}
         alt={alt}
         fill
-        priority
+        preload
         sizes="100vw"
         onLoad={() => setLoaded(true)}
         className={`object-cover object-center transition-opacity duration-700 ${
@@ -43,17 +43,17 @@ export default function Hero({
 
       <div className="absolute inset-0 bg-black/40" />
 
-      <div className="absolute left-7 top-14 flex max-w-[calc(100%-3.5rem)] flex-col gap-1.5 text-amber-50 lg:left-27 lg:top-24">
-        <h1 className="text-2xl font-bold lg:text-6xl">{title}</h1>
+      <div className="absolute inset-x-4 top-16 flex max-w-3xl flex-col gap-2 text-amber-50 sm:left-7 sm:right-auto lg:left-24 lg:top-24">
+        <h1 className="max-w-2xl text-3xl font-bold leading-tight sm:text-4xl lg:text-6xl">{title}</h1>
 
-        <p className="h-auto text-sm lg:w-169 lg:py-5 lg:text-2xl">
+        <p className="max-w-2xl text-sm leading-6 sm:text-base lg:py-4 lg:text-2xl lg:leading-9">
           {desc}
         </p>
 
         <div className="mt-3 flex flex-wrap gap-3 lg:mt-0">
           <Link
             href={menuHref}
-            className="inline-flex min-h-11 items-center justify-center rounded-full bg-amber-100 px-5 py-2.5 text-sm font-semibold text-stone-950 transition hover:bg-white"
+            className="inline-flex min-h-11 flex-1 items-center justify-center rounded-full bg-amber-100 px-5 py-2.5 text-sm font-semibold text-stone-950 transition hover:bg-white sm:flex-none"
           >
             {menuLabel}
           </Link>
@@ -61,7 +61,7 @@ export default function Hero({
             href={whatsappHref}
             target="_blank"
             rel="noreferrer"
-            className="inline-flex min-h-11 items-center justify-center rounded-full border border-amber-50/70 bg-black/20 px-5 py-2.5 text-sm font-semibold transition hover:bg-amber-50/15 hover:text-amber-100"
+            className="inline-flex min-h-11 flex-1 items-center justify-center rounded-full border border-amber-50/70 bg-black/20 px-5 py-2.5 text-sm font-semibold transition hover:bg-amber-50/15 hover:text-amber-100 sm:flex-none"
           >
             {whatsappLabel}
           </a>

@@ -55,6 +55,34 @@ export interface Dictionary {
     viewMenu: string;
     messageUs: string;
     recommended: string;
+    carouselDescription: string;
+    announcements: {
+      heading: string;
+      description: string;
+      typeLabels: Record<"notice" | "new" | "holiday", string>;
+    };
+    businessInfo: {
+      heading: string;
+      today: string;
+      location: string;
+      whatsapp: string;
+      wifi: string;
+      parking: string;
+    };
+    exploreTitle: string;
+    testimonials: {
+      heading: string;
+      description: string;
+      ratingLabel: string;
+      notice: string;
+    };
+    finalCta: {
+      title: string;
+      description: string;
+      menu: string;
+      visit: string;
+      whatsapp: string;
+    };
     storyLink: string;
     storyAlt: string;
     spaceLink: string;
@@ -72,10 +100,15 @@ export interface Dictionary {
   };
   menu: {
     pageTitle: string;
+    pageDescription: string;
     categoryTitle: string;
     categories: Record<MenuCategoryKey, string>;
     tags: Record<MenuTagKey, string>;
     currentCategory: string;
+    askAboutItem: string;
+    itemInquiryMessage: string;
+    notesTitle: string;
+    notes: string[];
   };
   about: {
     bannerTitle: string;
@@ -90,8 +123,17 @@ export interface Dictionary {
     }>;
     galleryTitle: string;
     galleryAlts: string[];
+    valuesTitle: string;
+    values: Array<{ title: string; description: string }>;
     teamTitle: string;
-    members: Array<{ name: string; alt: string; description: string }>;
+    favoriteLabel: string;
+    members: Array<{
+      name: string;
+      role: string;
+      alt: string;
+      description: string;
+      favorite: string;
+    }>;
   };
   contact: {
     bannerTitle: string;
@@ -127,6 +169,7 @@ export interface Dictionary {
     validation: {
       name: string;
       phone: string;
+      phoneFormat: string;
       enquiryType: string;
       message: string;
     };
@@ -134,6 +177,13 @@ export interface Dictionary {
     locationTitle: string;
     locationDescription: string;
     mapTitle: string;
+    gettingHereTitle: string;
+    gettingHere: string[];
+    facilitiesTitle: string;
+    facilities: string[];
+    faqTitle: string;
+    faqDescription: string;
+    faqs: Array<{ question: string; answer: string }>;
     notProvided: string;
     whatsappGreeting: string;
     whatsappFields: {
