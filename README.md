@@ -62,6 +62,8 @@ npm run dev
 
 打开 `http://localhost:3000`，根路径会跳转至中文首页。
 
+本项目是 Next.js 应用，本地开发必须使用 `npm run dev`。不要使用 VS Code Live Server，也不要直接打开构建目录或生成的 HTML/JavaScript 文件；这些方式不会运行 Next.js 路由、Redirects 和服务端功能，可能导致首页以外的页面显示 404。
+
 ## 环境变量
 
 复制 `.env.example` 为 `.env.local`，并设置最终线上网址：
@@ -81,6 +83,8 @@ npm run build
 npm run start
 ```
 
+Production 环境先执行 `npm run build`，再使用 `npm run start` 启动生成的 Next.js 应用。
+
 ## 图片压缩脚本
 
 项目中的图片主要为 WebP。`npm run compress-images` 支持 `.jpg`、`.jpeg`、`.png` 和 `.webp`，默认最大宽度为 1600px、WebP 质量为 82，并输出到系统临时目录 `coffeex-images-optimized`，不会覆盖 `public/images` 原图，也不会在构建时自动执行。
@@ -94,6 +98,15 @@ npm run start
 ## 部署
 
 可部署到支持 Next.js 的平台，例如 Vercel。部署时设置 `NEXT_PUBLIC_SITE_URL`，再使用平台默认的 `npm run build`。
+
+Vercel 设置：
+
+- Framework Preset 选择 `Next.js`
+- Build Command 使用默认的 `npm run build`
+- Output Directory 必须留空，不要设置为 `out`、`.next` 或 `.next/static`
+- 设置 `NEXT_PUBLIC_SITE_URL=https://你的正式域名`
+
+当前版本依赖 Next.js App Router、Redirects 和生产服务器，不适合直接作为 GitHub Pages 子目录静态站点部署。
 
 - Demo URL：尚未部署
 - GitHub：https://github.com/yongyik/coffeex
