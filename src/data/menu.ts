@@ -1,9 +1,26 @@
-export const menu = [
+export interface MenuItem {
+  id: string;
+  name: string;
+  description: string;
+  fullDescription: string;
+  photo: string;
+  price: number;
+  inSwiper: boolean;
+}
+
+export interface MenuCategory {
+  categoryKey: string;
+  category: string;
+  items: MenuItem[];
+}
+
+export const menu: MenuCategory[] = [
   {
     categoryKey: "hot",
     category: "热饮",
     items: [
       {
+        id: "hot-americano",
         name: "美式咖啡",
         description: "经典意式浓缩加水稀释，口感清爽顺滑。",
         fullDescription:
@@ -13,6 +30,7 @@ export const menu = [
         inSwiper: true,
       },
       {
+        id: "hot-latte",
         name: "拿铁",
         description: "柔和咖啡香与牛奶完美融合，适合喜欢奶香的你。",
         fullDescription:
@@ -22,6 +40,7 @@ export const menu = [
         inSwiper: false,
       },
       {
+        id: "hot-mocha",
         name: "摩卡",
         description: "浓郁巧克力与咖啡融合，口感顺滑，甜而不腻。",
         fullDescription:
@@ -39,6 +58,7 @@ export const menu = [
 
     items: [
       {
+        id: "iced-americano",
         name: "冰美式",
         description: "冰镇浓缩咖啡，口感清爽，适合夏日提神。",
         fullDescription:
@@ -48,6 +68,7 @@ export const menu = [
         inSwiper: false,
       },
       {
+        id: "iced-latte",
         name: "冰拿铁",
         description: "浓缩咖啡与冰牛奶融合，冰凉香浓。",
         fullDescription:
@@ -57,6 +78,7 @@ export const menu = [
         inSwiper: false,
       },
       {
+        id: "iced-mocha",
         name: "冰摩卡",
         description: "冰摩卡，巧克力与咖啡的冰爽碰撞。",
         fullDescription:
@@ -74,6 +96,7 @@ export const menu = [
 
     items: [
       {
+        id: "matcha-latte",
         name: "抹茶拿铁",
         description: "精选抹茶粉与牛奶调制，茶香浓郁，口感顺滑。",
         fullDescription:
@@ -83,6 +106,7 @@ export const menu = [
         inSwiper: true,
       },
       {
+        id: "red-tea-latte",
         name: "红茶拿铁",
         description: "红茶香气与牛奶完美结合，温暖醇厚。",
         fullDescription:
@@ -100,6 +124,7 @@ export const menu = [
 
     items: [
       {
+        id: "blueberry-cheesecake",
         name: "蓝莓乳酪蛋糕",
         description: "丝滑乳酪搭配新鲜蓝莓，口感细腻清新。",
         fullDescription:
@@ -109,6 +134,7 @@ export const menu = [
         inSwiper: false,
       },
       {
+        id: "chocolate-brownie",
         name: "巧克力布朗尼",
         description: "浓郁巧克力香，外脆内软，甜而不腻。",
         fullDescription:
@@ -118,6 +144,7 @@ export const menu = [
         inSwiper: false,
       },
       {
+        id: "madeleine",
         name: "玛德琳小蛋糕",
         description: "法式经典小点心，口感松软，香气扑鼻。",
         fullDescription:

@@ -1,6 +1,46 @@
 @import "tailwindcss";
 
-body {
-   font-family: var(--font-noto-serif-sc), serif;
+html {
+  scroll-behavior: smooth;
 }
 
+body {
+  overflow-x: clip;
+  font-family: "Noto Serif SC", "Songti SC", STSong, SimSun, serif;
+}
+
+:focus-visible {
+  outline: 3px solid rgb(253 230 138);
+  outline-offset: 3px;
+}
+
+.skip-link {
+  position: fixed;
+  left: 1rem;
+  top: 1rem;
+  z-index: 100;
+  transform: translateY(-200%);
+  border-radius: 9999px;
+  background: rgb(254 243 199);
+  padding: 0.75rem 1rem;
+  color: rgb(28 25 23);
+  font-weight: 700;
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

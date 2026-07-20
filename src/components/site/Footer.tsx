@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { siteConfig } from "@/config/site";
+import { getWhatsAppUrl } from "@/lib/whatsapp";
 
 const footerLinks = [
   {
@@ -34,22 +35,14 @@ const footerLinks = [
   },
 ];
 
-function getWhatsappUrl() {
-  const message = encodeURIComponent(
-    `你好，我想了解 ${siteConfig.name} 的服务。`,
-  );
-
-  return `https://wa.me/${siteConfig.whatsapp}?text=${message}`;
-}
-
 export function Footer() {
   const currentYear = new Date().getFullYear();
-  const whatsappUrl = getWhatsappUrl();
+  const whatsappUrl = getWhatsAppUrl();
 
   return (
     <footer className=" z-10 border-t bg-[url('/images/footer-bg.webp')] bg-cover bg-center text-white">
       <div className="mx-auto max-w-6xl px-6 py-12">
-        <div className="grid gap-10 md:grid-cols-[1.5fr_1fr_1fr]">
+        <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-[1.4fr_0.8fr_0.8fr_1fr]">
           <div>
             <Link href="/" className="inline-flex items-center gap-2">
               <div className="flex size-10 items-center justify-center rounded-xl bg-white text-sm font-bold text-stone-950">
@@ -66,9 +59,30 @@ export function Footer() {
             </p>
 
             <div className="mt-5 space-y-2 text-sm text-stone-300">
-              <p>电话：{siteConfig.phone}</p>
-              <p>Email：{siteConfig.email}</p>
-              <p>地址：{siteConfig.address}</p>
+              <p>
+                电话：
+                <a
+                  href={`tel:${siteConfig.phone.replace(/[\s-]/g, "")}`}
+                  className="hover:text-white"
+                >
+                  {siteConfig.phone}
+                </a>
+              </p>
+              <p>
+                Email：
+                <a
+                  href={`mailto:${siteConfig.email}`}
+                  className="hover:text-white"
+                >
+                  {siteConfig.email}
+                </a>
+              </p>
+              <p>
+                地址：
+                <Link href="/contact#location" className="hover:text-white">
+                  {siteConfig.address}
+                </Link>
+              </p>
             </div>
           </div>
 
@@ -97,8 +111,16 @@ export function Footer() {
             <h2 className="text-sm font-semibold text-white">联系我们</h2>
 
             <p className="mt-4 text-sm leading-7 text-stone-300">
-             想预订座位、询问菜单、活动包场或合作，可以直接通过 WhatsApp 联系我们。
+              想预订座位、询问菜单、活动包场或合作，可以直接通过 WhatsApp 联系我们。
             </p>
+
+            <div className="mt-4 space-y-1 text-sm text-stone-300">
+              {siteConfig.businessHours.map((item) => (
+                <p key={item.day}>
+                  {item.day}：{item.time}
+                </p>
+              ))}
+            </div>
 
             <a
               href={whatsappUrl}
@@ -108,6 +130,17 @@ export function Footer() {
             >
               WhatsApp 咨询
             </a>
+
+            {siteConfig.social.instagram ? (
+              <a
+                href={siteConfig.social.instagram}
+                target="_blank"
+                rel="noreferrer"
+                className="mt-3 block text-sm text-stone-300 underline underline-offset-4 transition hover:text-white"
+              >
+                Instagram：@morningoakcoffee
+              </a>
+            ) : null}
           </div>
         </div>
 
@@ -116,7 +149,10 @@ export function Footer() {
             © {currentYear} {siteConfig.name}. All rights reserved.
           </p>
 
-          <p>Designed & built with Next.js</p>
+          <p>
+            This is a fictional portfolio project created for demonstration
+            purposes.
+          </p>
         </div>
       </div>
     </footer>

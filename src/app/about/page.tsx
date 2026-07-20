@@ -9,7 +9,7 @@ import { Metadata } from "next";
 export const metadata: Metadata = {
   title: "关于我们",
   description:
-    "了解 MyCoffee 的品牌故事、咖啡理念、空间氛围与团队成员。我们希望用一杯好咖啡，为城市生活带来温暖与片刻安静。",
+    `了解${siteConfig.nameZh}的品牌故事、咖啡理念、空间氛围与团队成员。我们希望用一杯好咖啡，为城市生活带来温暖与片刻安静。`,
 
   alternates: {
     canonical: "/about",
@@ -18,8 +18,9 @@ export const metadata: Metadata = {
   openGraph: {
     title: `关于我们 | ${siteConfig.name}`,
     description:
-      "了解 MyCoffee 的故事、咖啡空间、团队成员与我们坚持的咖啡理念。",
+      `了解${siteConfig.nameZh}的故事、咖啡空间、团队成员与我们坚持的咖啡理念。`,
     url: "/about",
+    images: ["/images/about/header.webp"],
   },
 };
 
@@ -35,7 +36,7 @@ export default function AboutPage() {
       src: "/images/about/team-barista1.webp",
       alt: "团队成员 小夏 - 咖啡师",
       name: "小夏 - 咖啡师",
-      desc: "热爱旅行与探索，他走过世界各地的咖啡馆，把一路上的灵感带回到这座城市。开这家店，是想创造一个“让生活慢下来”的空间，也希望咖啡能成为人与人之间的桥梁。",
+      desc: "擅长意式咖啡与拉花，喜欢记住熟客常点的口味。她相信稳定、细致的日常，正是让一间咖啡店变得亲切的原因。",
     },
     {
       src: "/images/about/team-barista2.webp",
@@ -50,7 +51,7 @@ export default function AboutPage() {
       <Banner
         title="一个温暖小屋"
         src="/images/about/header.webp"
-        alt="一个手拿着咖啡豆"
+        alt="手掌托着新鲜烘焙咖啡豆的特写"
       />
 
       <SectionNav
@@ -122,12 +123,30 @@ export default function AboutPage() {
           id="space"
           title="空间氛围"
           images={[
-            { src: "/images/about/environment-1.webp", alt: "环境照片 1" },
-            { src: "/images/about/environment-2.webp", alt: "环境照片 2" },
-            { src: "/images/about/environment-3.webp", alt: "环境照片 3" },
-            { src: "/images/about/environment-4.webp", alt: "环境照片 4" },
-            { src: "/images/about/environment-5.webp", alt: "环境照片 5" },
-            { src: "/images/about/environment-6.webp", alt: "环境照片 6" },
+            {
+              src: "/images/about/environment-1.webp",
+              alt: "咖啡店窗边的木桌与座椅",
+            },
+            {
+              src: "/images/about/environment-2.webp",
+              alt: "摆放咖啡豆与绿植的木质陈列柜",
+            },
+            {
+              src: "/images/about/environment-3.webp",
+              alt: "阳光下坐在咖啡店里的猫与盆栽",
+            },
+            {
+              src: "/images/about/environment-4.webp",
+              alt: "带户外座位与玻璃橱窗的街角店面",
+            },
+            {
+              src: "/images/about/environment-5.webp",
+              alt: "砖墙、吊灯与大窗围成的咖啡店座位区",
+            },
+            {
+              src: "/images/about/environment-6.webp",
+              alt: "窗边排列的玻璃冷萃咖啡器具",
+            },
           ]}
         />
 

@@ -1,8 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Pagination, Autoplay } from "swiper/modules";
+import { A11y, Autoplay, Keyboard, Pagination } from "swiper/modules";
 import { motion } from "framer-motion";
 import SwiperCard from "./SwiperCard";
 
@@ -22,13 +22,28 @@ type Props = {
 
 export default function HeroSlider({ items }: Props) {
   const [ready, setReady] = useState(false);
+  const [reduceMotion, setReduceMotion] = useState(false);
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const updatePreference = () => setReduceMotion(mediaQuery.matches);
+
+    updatePreference();
+    mediaQuery.addEventListener("change", updatePreference);
+
+    return () => mediaQuery.removeEventListener("change", updatePreference);
+  }, []);
 
   if (items.length === 0) {
     return null;
   }
 
   return (
-    <section className="mx-auto min-h-70 w-full max-w-7xl px-5">
+    <section
+      aria-label="推荐饮品轮播"
+      aria-roledescription="carousel"
+      className="mx-auto min-h-70 w-full max-w-7xl px-5"
+    >
       <motion.div
         initial={{ opacity: 0, y: 24 }}
         animate={{
@@ -42,18 +57,30 @@ export default function HeroSlider({ items }: Props) {
         className="w-full"
       >
         <Swiper
-          modules={[Pagination, Autoplay]}
+          modules={[Pagination, Autoplay, Keyboard, A11y]}
           onAfterInit={() => setReady(true)}
           loop={items.length > 2}
           speed={900}
-          autoplay={{
-            delay: 3500,
-            disableOnInteraction: false,
-            pauseOnMouseEnter: true,
+          autoplay={
+            reduceMotion
+              ? false
+              : {
+                  delay: 5000,
+                  disableOnInteraction: false,
+                  pauseOnMouseEnter: true,
+                }
+          }
+          keyboard={{ enabled: true, onlyInViewport: true }}
+          a11y={{
+            enabled: true,
+            containerMessage: "推荐饮品轮播",
+            slideLabelMessage: "第 {{index}} 张，共 {{slidesLength}} 张",
+            paginationBulletMessage: "前往第 {{index}} 张推荐饮品",
           }}
           pagination={{ clickable: true }}
           spaceBetween={16}
           slidesPerView={1}
+          watchSlidesProgress
           breakpoints={{
             768: {
               slidesPerView: 2,
@@ -63,7 +90,7 @@ export default function HeroSlider({ items }: Props) {
           className="pb-10"
         >
           {items.map((item) => (
-            <SwiperSlide key={item.name}>
+            <SwiperSlide key={item.name} aria-label={item.name}>
               <SwiperCard
                 src={item.photo}
                 alt={item.name}

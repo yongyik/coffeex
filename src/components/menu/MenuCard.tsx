@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useEffect, useId, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 
 interface Props {
@@ -29,6 +29,11 @@ export default function MenuCard({
   price,
 }: Props) {
   const [showMore, setShowMore] = useState(false);
+  const titleId = useId();
+  const descriptionId = useId();
+  const triggerRef = useRef<HTMLButtonElement>(null);
+  const dialogRef = useRef<HTMLDivElement>(null);
+  const closeButtonRef = useRef<HTMLButtonElement>(null);
 
   function openModal() {
     setShowMore(true);
@@ -44,19 +49,49 @@ export default function MenuCard({
     }
 
     const originalOverflow = document.body.style.overflow;
+    const triggerElement = triggerRef.current;
     document.body.style.overflow = "hidden";
 
-    function handleEscape(event: KeyboardEvent) {
+    window.requestAnimationFrame(() => closeButtonRef.current?.focus());
+
+    function handleDialogKeyDown(event: KeyboardEvent) {
       if (event.key === "Escape") {
         closeModal();
+        return;
+      }
+
+      if (event.key !== "Tab") {
+        return;
+      }
+
+      const focusableElements = dialogRef.current?.querySelectorAll<HTMLElement>(
+        'button:not([disabled]), a[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])',
+      );
+
+      if (!focusableElements?.length) {
+        event.preventDefault();
+        dialogRef.current?.focus();
+        return;
+      }
+
+      const firstElement = focusableElements[0];
+      const lastElement = focusableElements[focusableElements.length - 1];
+
+      if (event.shiftKey && document.activeElement === firstElement) {
+        event.preventDefault();
+        lastElement.focus();
+      } else if (!event.shiftKey && document.activeElement === lastElement) {
+        event.preventDefault();
+        firstElement.focus();
       }
     }
 
-    document.addEventListener("keydown", handleEscape);
+    document.addEventListener("keydown", handleDialogKeyDown);
 
     return () => {
       document.body.style.overflow = originalOverflow;
-      document.removeEventListener("keydown", handleEscape);
+      document.removeEventListener("keydown", handleDialogKeyDown);
+      triggerElement?.focus();
     };
   }, [showMore]);
 
@@ -89,6 +124,7 @@ export default function MenuCard({
             </p>
 
             <button
+              ref={triggerRef}
               type="button"
               onClick={openModal}
               className="text-sm font-medium underline underline-offset-4 transition hover:text-amber-200"
@@ -109,9 +145,12 @@ export default function MenuCard({
             onClick={closeModal}
           >
             <motion.div
+              ref={dialogRef}
               role="dialog"
               aria-modal="true"
-              aria-labelledby={`menu-${name}`}
+              aria-labelledby={titleId}
+              aria-describedby={descriptionId}
+              tabIndex={-1}
               onClick={(event) => event.stopPropagation()}
               className="relative max-h-[90vh] w-full max-w-md overflow-y-auto rounded-3xl border border-amber-300 bg-[url('/images/bg1.webp')] bg-cover bg-center p-6 text-amber-100 shadow-2xl"
               initial={{ scale: 0.92, opacity: 0, y: 24 }}
@@ -120,10 +159,11 @@ export default function MenuCard({
               transition={{ duration: 0.25, ease: "easeOut" }}
             >
               <button
+                ref={closeButtonRef}
                 type="button"
                 onClick={closeModal}
                 aria-label="关闭"
-                className="absolute right-4 top-4 flex size-9 items-center justify-center rounded-full border border-amber-50/30 bg-black/30 text-xl leading-none text-amber-50 transition hover:bg-amber-50 hover:text-stone-950"
+                className="absolute right-4 top-4 flex size-11 items-center justify-center rounded-full border border-amber-50/30 bg-black/30 text-xl leading-none text-amber-50 transition hover:bg-amber-50 hover:text-stone-950"
               >
                 ×
               </button>
@@ -140,11 +180,14 @@ export default function MenuCard({
 
               <section className="mt-6 flex flex-col gap-4">
                 <div className="text-center">
-                  <h2 id={`menu-${name}`} className="text-4xl font-bold">
+                  <h2 id={titleId} className="text-4xl font-bold">
                     {name}
                   </h2>
 
-                  <p className="mt-4 text-sm leading-7 text-amber-50/85">
+                  <p
+                    id={descriptionId}
+                    className="mt-4 text-sm leading-7 text-amber-50/85"
+                  >
                     {fullDescription}
                   </p>
                 </div>

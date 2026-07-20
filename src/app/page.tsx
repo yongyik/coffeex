@@ -8,7 +8,7 @@ import { siteConfig } from "@/config/site";
 export const metadata: Metadata = {
   title: "首页",
   description:
-    "欢迎来到 MyCoffee，一家位于 Kuala Lumpur 的温暖咖啡店。探索我们的推荐饮品、咖啡空间、品牌故事与团队介绍。",
+    `欢迎来到${siteConfig.nameZh}，一家位于 Kuala Lumpur Mont Kiara 的温暖咖啡店。探索推荐饮品、咖啡空间、品牌故事与团队介绍。`,
 
   alternates: {
     canonical: "/",
@@ -16,8 +16,9 @@ export const metadata: Metadata = {
 
   openGraph: {
     title: `首页 | ${siteConfig.name}`,
-    description: "探索 MyCoffee 的手工咖啡、推荐饮品、舒适空间与品牌故事。",
+    description: `探索${siteConfig.nameZh}的手工咖啡、推荐饮品、舒适空间与品牌故事。`,
     url: "/",
+    images: ["/images/hero-bg1.webp"],
   },
 };
 
@@ -30,15 +31,15 @@ export default function HomePage() {
     <div className="mx-auto  max-w-7xl space-y-2 mb-20">
       <Hero
         src={"/images/hero-bg1.webp"}
-        alt={"hero"}
-        title={"手工烘焙 · 一杯温暖你的咖啡"}
+        alt={"质朴木桌上的手工咖啡与咖啡豆"}
+        title={"一杯好咖啡，一段慢时光"}
         desc={
-          "「我们是一家位于市中心的小咖啡馆，精选咖啡豆，用心冲泡每一杯。」"
+          "在 Mont Kiara 的城市日常里，精选咖啡豆，用心冲泡每一杯。"
         }
       />
-      <p className="  w-full text-center text-4xl font-bold p-2 lg:text-6xl lg:py-6">
+      <h2 className="w-full p-2 text-center text-4xl font-bold lg:py-6 lg:text-6xl">
         推荐饮品
-      </p>
+      </h2>
       <HeroSlider items={swiperItems} />
 
       <ImageLinkSection
