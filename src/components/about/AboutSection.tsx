@@ -44,7 +44,7 @@ export default function AboutSection({
 
       <div className="max-w-198 space-y-4">
         {paragraphs.map((paragraph, index) => (
-          <p key={index} className="leading-8 lg:text-2xl lg:leading-10">
+          <p key={index} className="leading-8 lg:text-xl lg:leading-9">
             {paragraph}
           </p>
         ))}

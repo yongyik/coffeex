@@ -4,22 +4,28 @@ import Image from "next/image";
 import Link from "next/link";
 
 interface Props {
+  href: string;
+  linkLabel: string;
   src: string;
   alt: string;
   name: string;
   description: string;
   price: number;
+  priceLabel: string;
 }
 
 export default function SwiperCard({
+  href,
+  linkLabel,
   src,
   alt,
   name,
   description,
   price,
+  priceLabel,
 }: Props) {
   return (
-    <Link href="/menu" aria-label={`查看 ${name} 的菜单详情`} className="block">
+    <Link href={href} aria-label={linkLabel} className="block">
       <article className="mx-auto flex h-54 w-full max-w-xl flex-row gap-3 bg-[url('/images/bg1.webp')] bg-cover bg-center px-3 py-6.5 text-amber-50 transition duration-500 hover:scale-107">
         <figure className="relative w-28 shrink-0 sm:w-47">
           <Image
@@ -38,7 +44,7 @@ export default function SwiperCard({
 
           <div>
             <p className="font-semibold flex justify-end px-4">
-              <span className="sr-only">价格：</span>RM {price}
+              <span className="sr-only">{priceLabel}：</span>RM {price}
             </p>
           </div>
         </section>

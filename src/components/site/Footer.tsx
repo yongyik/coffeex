@@ -1,85 +1,74 @@
 import Link from "next/link";
 import { siteConfig } from "@/config/site";
+import { getLocalizedPath } from "@/i18n/config";
+import type { Dictionary, Locale } from "@/i18n/types";
 import { getWhatsAppUrl } from "@/lib/whatsapp";
 
-const footerLinks = [
-  {
-    title: "网站导航",
-    links: [
-      {
-        label: "首页",
-        href: "/",
-      },
-      {
-        label: "关于我们",
-        href: "/about",
-      },
-      {
-        label: "菜单",
-        href: "/menu",
-      },
-      {
-        label: "联系我们",
-        href: "/contact",
-      },
-    ],
-  },
-  {
-    title: "其他页面",
-    links: [
-      {
-        label: "隐私政策",
-        href: "/privacy",
-      },
-    ],
-  },
-];
+interface FooterProps {
+  locale: Locale;
+  dictionary: Dictionary["footer"];
+}
 
-export function Footer() {
+export function Footer({ locale, dictionary }: FooterProps) {
   const currentYear = new Date().getFullYear();
-  const whatsappUrl = getWhatsAppUrl();
+  const whatsappUrl = getWhatsAppUrl(locale);
+  const footerLinks = [
+    {
+      title: dictionary.navigation,
+      links: [
+        { label: dictionary.nav.home, href: getLocalizedPath(locale) },
+        { label: dictionary.nav.about, href: getLocalizedPath(locale, "/about") },
+        { label: dictionary.nav.menu, href: getLocalizedPath(locale, "/menu") },
+        { label: dictionary.nav.contact, href: getLocalizedPath(locale, "/contact") },
+      ],
+    },
+    {
+      title: dictionary.otherPages,
+      links: [
+        { label: dictionary.privacy, href: getLocalizedPath(locale, "/privacy") },
+      ],
+    },
+  ];
 
   return (
-    <footer className=" z-10 border-t bg-[url('/images/footer-bg.webp')] bg-cover bg-center text-white">
+    <footer className="z-10 border-t bg-[url('/images/footer-bg.webp')] bg-cover bg-center text-white">
       <div className="mx-auto max-w-6xl px-6 py-12">
         <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-[1.4fr_0.8fr_0.8fr_1fr]">
           <div>
-            <Link href="/" className="inline-flex items-center gap-2">
+            <Link href={getLocalizedPath(locale)} className="inline-flex items-center gap-2">
               <div className="flex size-10 items-center justify-center rounded-xl bg-white text-sm font-bold text-stone-950">
-                {siteConfig.name.charAt(0)}
+                M
               </div>
-
               <span className="text-lg font-bold tracking-tight">
-                {siteConfig.name}
+                {locale === "zh"
+                  ? `${siteConfig.nameZh} ${siteConfig.name}`
+                  : siteConfig.name}
               </span>
             </Link>
 
             <p className="mt-4 max-w-md text-sm leading-7 text-stone-300">
-              {siteConfig.description}
+              {siteConfig.description[locale]}
             </p>
 
             <div className="mt-5 space-y-2 text-sm text-stone-300">
               <p>
-                电话：
-                <a
-                  href={`tel:${siteConfig.phone.replace(/[\s-]/g, "")}`}
-                  className="hover:text-white"
-                >
+                {dictionary.phone}：
+                <a href={`tel:${siteConfig.phoneHref}`} className="hover:text-white">
                   {siteConfig.phone}
                 </a>
               </p>
               <p>
-                Email：
-                <a
-                  href={`mailto:${siteConfig.email}`}
-                  className="hover:text-white"
-                >
+                {dictionary.email}：
+                <a href={`mailto:${siteConfig.email}`} className="hover:text-white">
                   {siteConfig.email}
                 </a>
               </p>
               <p>
-                地址：
-                <Link href="/contact#location" className="hover:text-white">
+                {dictionary.address}：
+                <Link
+                  href={`${getLocalizedPath(locale, "/contact")}#location`}
+                  className="hover:text-white"
+                >
                   {siteConfig.address}
                 </Link>
               </p>
@@ -88,10 +77,7 @@ export function Footer() {
 
           {footerLinks.map((group) => (
             <div key={group.title}>
-              <h2 className="text-sm font-semibold text-white">
-                {group.title}
-              </h2>
-
+              <h2 className="text-sm font-semibold text-white">{group.title}</h2>
               <ul className="mt-4 space-y-3">
                 {group.links.map((link) => (
                   <li key={link.href}>
@@ -108,16 +94,16 @@ export function Footer() {
           ))}
 
           <div>
-            <h2 className="text-sm font-semibold text-white">联系我们</h2>
-
-            <p className="mt-4 text-sm leading-7 text-stone-300">
-              想预订座位、询问菜单、活动包场或合作，可以直接通过 WhatsApp 联系我们。
+            <h2 className="text-sm font-semibold text-white">
+              {dictionary.contactUs}
+            </h2>
+            <p className="mt-4 text-sm font-medium text-stone-200">
+              {dictionary.businessHours}
             </p>
-
-            <div className="mt-4 space-y-1 text-sm text-stone-300">
+            <div className="mt-2 space-y-1 text-sm text-stone-300">
               {siteConfig.businessHours.map((item) => (
-                <p key={item.day}>
-                  {item.day}：{item.time}
+                <p key={item.day.en}>
+                  {item.day[locale]}：{item.time[locale]}
                 </p>
               ))}
             </div>
@@ -128,31 +114,20 @@ export function Footer() {
               rel="noreferrer"
               className="mt-5 inline-flex rounded-full bg-white px-5 py-2.5 text-sm font-semibold text-stone-950 transition hover:bg-stone-200"
             >
-              WhatsApp 咨询
+              {dictionary.whatsapp}
             </a>
 
-            {siteConfig.social.instagram ? (
-              <a
-                href={siteConfig.social.instagram}
-                target="_blank"
-                rel="noreferrer"
-                className="mt-3 block text-sm text-stone-300 underline underline-offset-4 transition hover:text-white"
-              >
-                Instagram：@morningoakcoffee
-              </a>
-            ) : null}
+            <p className="mt-3 text-sm text-stone-300">
+              {dictionary.instagram}：{siteConfig.instagramHandle}
+            </p>
           </div>
         </div>
 
         <div className="mt-10 flex flex-col gap-3 border-t border-white/10 pt-6 text-sm text-stone-400 md:flex-row md:items-center md:justify-between">
           <p>
-            © {currentYear} {siteConfig.name}. All rights reserved.
+            © {currentYear} {siteConfig.name}. {dictionary.copyright}
           </p>
-
-          <p>
-            This is a fictional portfolio project created for demonstration
-            purposes.
-          </p>
+          <p>{siteConfig.portfolioNotice[locale]}</p>
         </div>
       </div>
     </footer>

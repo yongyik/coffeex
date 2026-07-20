@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useEffect, useId, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
+import type { Dictionary, MenuTagKey } from "@/i18n/types";
 
 interface Props {
   src: string;
@@ -11,6 +12,11 @@ interface Props {
   description: string;
   fullDescription: string;
   price: number;
+  tags: MenuTagKey[];
+  options: string[];
+  allergens: string[];
+  labels: Dictionary["common"];
+  tagLabels: Dictionary["menu"]["tags"];
 }
 
 function formatPrice(price: number) {
@@ -27,6 +33,11 @@ export default function MenuCard({
   description,
   fullDescription,
   price,
+  tags,
+  options,
+  allergens,
+  labels,
+  tagLabels,
 }: Props) {
   const [showMore, setShowMore] = useState(false);
   const titleId = useId();
@@ -98,7 +109,7 @@ export default function MenuCard({
   return (
     <>
       <article className="flex h-full flex-col overflow-hidden rounded-2xl border border-amber-50/30 bg-amber-50/10 shadow-md transition hover:bg-amber-50/15 sm:flex-row">
-        <figure className="relative h-96 w-full shrink-0 overflow-hidden bg-black/20 sm:h-60 sm:w-40 lg:h-68 lg:w-44">
+        <figure className="relative h-72 w-full shrink-0 overflow-hidden bg-black/20 sm:h-60 sm:w-40 lg:h-68 lg:w-44">
           <Image
             src={src}
             alt={alt}
@@ -115,11 +126,24 @@ export default function MenuCard({
             <p className="line-clamp-3 text-sm leading-6 text-amber-50/85">
               {description}
             </p>
+
+            {tags.length ? (
+              <ul aria-label={labels.tags} className="flex flex-wrap gap-2">
+                {tags.map((tag) => (
+                  <li
+                    key={tag}
+                    className="rounded-full border border-amber-50/25 bg-black/20 px-2.5 py-1 text-xs text-amber-100"
+                  >
+                    {tagLabels[tag]}
+                  </li>
+                ))}
+              </ul>
+            ) : null}
           </div>
 
           <div className="flex items-center justify-between gap-3">
             <p className="font-semibold text-amber-100">
-              <span className="sr-only">价格：</span>
+              <span className="sr-only">{labels.price}：</span>
               {formatPrice(price)}
             </p>
 
@@ -129,7 +153,7 @@ export default function MenuCard({
               onClick={openModal}
               className="text-sm font-medium underline underline-offset-4 transition hover:text-amber-200"
             >
-              了解更多
+              {labels.learnMore}
             </button>
           </div>
         </section>
@@ -162,7 +186,7 @@ export default function MenuCard({
                 ref={closeButtonRef}
                 type="button"
                 onClick={closeModal}
-                aria-label="关闭"
+                aria-label={labels.close}
                 className="absolute right-4 top-4 flex size-11 items-center justify-center rounded-full border border-amber-50/30 bg-black/30 text-xl leading-none text-amber-50 transition hover:bg-amber-50 hover:text-stone-950"
               >
                 ×
@@ -192,9 +216,34 @@ export default function MenuCard({
                   </p>
                 </div>
 
+                {tags.length || options.length || allergens.length ? (
+                  <div className="space-y-3 border-t border-amber-50/20 pt-4 text-sm">
+                    {tags.length ? (
+                      <div>
+                        <h3 className="font-semibold text-amber-100">{labels.tags}</h3>
+                        <p className="mt-1 text-amber-50/85">
+                          {tags.map((tag) => tagLabels[tag]).join(" · ")}
+                        </p>
+                      </div>
+                    ) : null}
+                    {options.length ? (
+                      <div>
+                        <h3 className="font-semibold text-amber-100">{labels.options}</h3>
+                        <p className="mt-1 text-amber-50/85">{options.join(" · ")}</p>
+                      </div>
+                    ) : null}
+                    {allergens.length ? (
+                      <div>
+                        <h3 className="font-semibold text-amber-100">{labels.allergens}</h3>
+                        <p className="mt-1 text-amber-50/85">{allergens.join(" · ")}</p>
+                      </div>
+                    ) : null}
+                  </div>
+                ) : null}
+
                 <div className="flex items-center justify-between border-t border-amber-50/20 pt-4">
                   <p className="text-lg font-bold text-amber-100">
-                    <span className="sr-only">价格：</span>
+                    <span className="sr-only">{labels.price}：</span>
                     {formatPrice(price)}
                   </p>
 
@@ -203,7 +252,7 @@ export default function MenuCard({
                     onClick={closeModal}
                     className="rounded-full border border-amber-50/40 px-4 py-2 text-sm font-medium transition hover:bg-amber-50 hover:text-stone-950"
                   >
-                    收起来
+                    {labels.collapse}
                   </button>
                 </div>
               </section>

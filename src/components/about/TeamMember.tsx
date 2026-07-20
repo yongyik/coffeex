@@ -11,9 +11,9 @@ interface Props {
 
 export default function TeamMember({ id, title, members }: Props) {
   return (
-    <section id={id} className="p-7">
+    <section id={id} className="scroll-mt-24 p-7">
       <h2 className="text-4xl">{title}</h2>
-      <ul>
+      <ul className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
         {members.map((m) => (
           <motion.li 
             initial={{  opacity: 0 }}
@@ -21,7 +21,7 @@ export default function TeamMember({ id, title, members }: Props) {
             viewport={{ once: true, amount: 0.1 }}
             transition={{ duration: 0.8 }}
             key={m.name}
-            className="py-7 flex flex-col gap-2.5"
+            className="flex flex-col gap-2.5 py-7"
           >
             <Image
               src={m.src}

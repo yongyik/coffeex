@@ -1,13 +1,14 @@
 interface Props {
+  ariaLabel: string;
   links: {
     href: string;
     label: string;
   }[];
 }
 
-export default function SectionNav({ links }: Props) {
+export default function SectionNav({ ariaLabel, links }: Props) {
   return (
-    <nav aria-label="页面区块导航" className="p-1.5">
+    <nav aria-label={ariaLabel} className="p-1.5">
       <div className="flex flex-col gap-1.5">
         {links.map((link) => (
           <a
